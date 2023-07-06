@@ -2,4 +2,4 @@
 
 This repository contains all my solutions to several frontend mentor challenges
 
-- Workit Landing Page - [Click Here](https://github.com/binarypsilocybin/frontend-mentor-projects)
+- Workit Landing Page - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/workit-landing-page/)
