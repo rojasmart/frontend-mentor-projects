@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap");
+:root {
+  --red: #f65552;
+  --blue: #0a327b;
+  --very-dark-grey-blue: #1c202b;
+  --dark-grey-blue: #5e6778;
+  --grey-blue: #939cad;
+  --very-light-grey-blue: #dde7ee;
+  --snow: #f7fafd;
+  --white: #ffffff;
+}
+
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: var(--snow);
+}
+.container {
+  margin: 2rem;
+  width: 700px;
+  background-color: var(--white);
+  padding: 1.5rem 1.5rem;
+  border-radius: 1rem;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.notifications-box {
+  display: flex;
+  align-items: center;
+}
+#notifications {
+  background-color: var(--blue);
+  margin-left: 0.5rem;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  color: var(--white);
+  font-weight: 800;
+  border-radius: 0.5rem;
+}
+#mark-all {
+  cursor: pointer;
+}
+#mark-all:hover {
+  color: var(--blue);
+}
+p {
+  color: var(--dark-grey-blue);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.notification-card {
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+img {
+  width: 50px;
+}
+.description {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+strong {
+  color: var(--very-dark-grey-blue);
+  cursor: pointer;
+}
+strong:hover {
+  color: var(--blue);
+}
+.unread {
+  background-color: var(--snow) !important;
+}
+.unread p:first-of-type::after {
+  content: " ";
+  background-color: var(--red);
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 50%;
+}
+.message-card {
+  display: flex;
+  align-items: center;
+}
+.message {
+  padding: 1rem;
+  border: 1px solid var(--very-light-grey-blue);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin: 0 0 0 5rem;
+}
+.message:hover {
+  background-color: var(--very-light-grey-blue);
+}
+.chess_img {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    margin: 0;
+  }
+}
