@@ -26,14 +26,36 @@ fetchData().then((data) => {
       datasets: [
         {
           data: values,
-          borderWidth: 1,
+          borderRadius: 5,
+          borderSkipped: false,
+          backgroundColor: "#ec755d",
         },
       ],
     },
     options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
       scales: {
         y: {
           beginAtZero: true,
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
+          display: false,
+        },
+        x: {
+          grid: {
+            display: false,
+          },
+          border: {
+            display: false,
+          },
         },
       },
     },
