@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | GitHub user search app</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container-title">
+        <h2>devfinder</h2>
+        <div class="toggle-theme">
+          <p>DARK</p>
+          <img src="./assets/icon-moon.svg" />
+        </div>
+      </div>
+      <header>
+        <div class="search-input">
+          <img class="icon-search" src="./assets/icon-search.svg" />
+          <input type="text" placeholder="Search GitHub username..." />
+        </div>
+        <button type="button">Search</button>
+      </header>
+      <main>
+        <div class="container-user">
+          <img src="./assets/user.svg" />
+          <div class="container-user-info">
+            <div class="container-user-left">
+              <div class="inner-user">
+                <h1 class="username">The Octocat</h1>
+                <a class="nickname" href="#">@octocat</a>
+              </div>
+              <p class="date">Joined 25 Jan 2021</p>
+            </div>
+            <p class="description">This profile has no bio</p>
+
+            <div class="container-repos">
+              <div class="inner-repos">
+                <p>Repos</p>
+                <h2>8</h2>
+              </div>
+              <div class="inner-followers">
+                <p>Followers</p>
+                <h2>3938</h2>
+              </div>
+              <div class="inner-following">
+                <p>Following</p>
+                <h2>9</h2>
+              </div>
+            </div>
+            <div class="container-links">
+              <div class="inner-location">
+                <img src="./assets/icon-location.svg" />
+                <p>San Francisco</p>
+              </div>
+              <div class="inner-twitter">
+                <img src="./assets/icon-twitter.svg" />
+                <p>Not Available</p>
+              </div>
+              <div class="inner-website">
+                <img src="./assets/icon-website.svg" />
+                <p>https//github.blog</p>
+              </div>
+              <div class="inner-github">
+                <img src="./assets/icon-company.svg" />
+                <p>@github</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
