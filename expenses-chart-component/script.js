@@ -28,7 +28,24 @@ fetchData().then((data) => {
           data: values,
           borderRadius: 5,
           borderSkipped: false,
-          backgroundColor: "#ec755d",
+          backgroundColor: [
+            "#ec755d",
+            "#ec755d",
+            "#76B5BC",
+            "#ec755d",
+            "#ec755d",
+            "#ec755d",
+            "#ec755d",
+          ],
+          hoverBackgroundColor: [
+            "#FF9B86",
+            "#FF9B86",
+            "#B4E0E5",
+            "#FF9B86",
+            "#FF9B86",
+            "#FF9B86",
+            "#FF9B86",
+          ],
         },
       ],
     },
@@ -36,6 +53,17 @@ fetchData().then((data) => {
       plugins: {
         legend: {
           display: false,
+        },
+        tooltip: {
+          callbacks: {
+            title: () => null,
+            label: ({ formattedValue }) => `$${formattedValue}`,
+          },
+          displayColors: false,
+          backgroundColor: "#382314",
+          bodyFont: {
+            size: 18,
+          },
         },
       },
       scales: {

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
 :root {
   --card-white: #fffbf6;
   --cyan: #76b5bc;
@@ -10,7 +10,7 @@
 }
 
 * {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -23,6 +23,7 @@ body {
   align-items: center;
   background-color: var(--background);
 }
+
 .container {
   margin: 2rem;
   width: 540px;
@@ -43,11 +44,15 @@ header {
 
 main {
   height: 511px;
-  background-color: var(--white);
+  background-color: var(--card-white);
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1.5rem;
+  padding: 1.7rem 2.2rem;
   border-radius: 1rem;
+}
+
+main h1 {
+  color: var(--dark-brown);
 }
 
 .balance {
@@ -56,6 +61,7 @@ main {
   justify-content: center;
   gap: 0.5rem;
 }
+
 .charts {
   width: auto;
   height: 100%;
@@ -71,8 +77,24 @@ main {
   border-top: 0.1rem solid var(--background);
 }
 
+.total-number h1 {
+  color: var(--dark-brown);
+}
+
 .total-last-month {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.total-last-month h5 {
+  margin-left: auto;
+  color: var(--dark-brown);
+}
+
+.title {
+  color: var(--white);
+}
+p {
+  color: var(--medium-brown);
 }
