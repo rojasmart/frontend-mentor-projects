@@ -26,13 +26,18 @@
       <header>
         <div class="search-input">
           <img class="icon-search" src="./assets/icon-search.svg" />
-          <input type="text" placeholder="Search GitHub username..." />
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search GitHub username..."
+            user-search
+          />
         </div>
-        <button type="button">Search</button>
+        <button id="btn-search" type="button">Search</button>
       </header>
       <main>
         <div class="container-user">
-          <img src="./assets/user.svg" />
+          <img class="img-user" src="./assets/user.svg" />
           <div class="container-user-info">
             <div class="container-user-left">
               <div class="inner-user">

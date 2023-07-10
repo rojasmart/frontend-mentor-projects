@@ -6,3 +6,4 @@ This repository contains all my solutions to several frontend mentor challenges
 - Notifications Page - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/notifications-page/)
 - Expenses Chart Component - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/expenses-chart-component/)
 - Advice Generator App - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/advice-generator-app/)
+- Github User Search App - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/github-user-search-app/)
