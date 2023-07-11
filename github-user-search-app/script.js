@@ -1,5 +1,6 @@
 const inputSearch = document.getElementById("search-input");
 const buttonFetch = document.getElementById("btn-search");
+const buttonToggle = document.querySelector(".toggle-theme");
 const imgUser = document.querySelector(".img-user");
 const userName = document.querySelector(".username");
 const nickName = document.querySelector(".nickname");
@@ -13,6 +14,34 @@ const twitter = document.querySelector(".inner-twitter p");
 const website = document.querySelector(".inner-website p");
 const office = document.querySelector(".inner-office p");
 
+setUpDarkMode();
+
+function setUpDarkMode() {
+  const themeBtn = document.getElementById("toggle-btn");
+
+  function toggleThemeBtn() {
+    document.getElementById("toggle-light").classList.toggle("hidden");
+    document.getElementById("toggle-dark").classList.toggle("hidden");
+  }
+
+  function toggleDarkMode(state) {
+    document.documentElement.classList.toggle("dark", state);
+  }
+
+  const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+  useDark.addEventListener("change", function listenToThemeChange(e) {
+    toggleDarkMode(e.matches);
+    toggleThemeBtn();
+  });
+
+  toggleDarkMode(useDark.matches);
+
+  themeBtn.addEventListener("click", function toggleTheme(e) {
+    document.documentElement.classList.toggle("dark");
+    toggleThemeBtn();
+  });
+}
+
 inputSearch.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -22,17 +51,17 @@ inputSearch.addEventListener("keyup", (event) => {
 
 buttonFetch.addEventListener("click", () => {
   const searchUser = inputSearch.value;
+
   const fetchData = async (searchUser) => {
     try {
       const res = await fetch(`https://api.github.com/users/${searchUser}`);
-      if (res.status === 404) {
-        errorInput();
-      } else if (res.ok) {
-        const errorMessage = document.querySelector(".error-search");
-        errorMessage.remove();
+      if (res.ok) {
+        document.querySelector(".error-search").style.display = "none";
         const data = await res.json();
         buildCard(data);
         return data;
+      } else if (res.status === 404) {
+        document.querySelector(".error-search").style.display = "block";
       }
     } catch (error) {
       console.log(error);
@@ -40,14 +69,6 @@ buttonFetch.addEventListener("click", () => {
   };
   fetchData(searchUser);
 });
-
-const errorInput = () => {
-  const search = document.querySelector(".search");
-  const errorMessage = document.createElement("p");
-  errorMessage.classList.add("error-search");
-  errorMessage.innerHTML = "No results";
-  search.appendChild(errorMessage);
-};
 
 const buildCard = (data) => {
   const dateData = new Date(data.created_at);
