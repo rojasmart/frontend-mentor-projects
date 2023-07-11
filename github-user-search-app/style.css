@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 :root {
   --light-blue: #0079ff;
   --gray: #697c9a;
@@ -10,7 +10,6 @@
 
 * {
   font-family: "Space Mono", sans-serif;
-  font-weight: 800;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -22,6 +21,26 @@ body {
   justify-content: center;
   align-items: center;
   background-color: var(--light-white);
+  font-size: 0.938rem;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 1.625rem;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.813rem;
+  font-weight: 400;
+  color: var(--grayish-blue);
 }
 
 .container {
@@ -108,11 +127,6 @@ main {
   height: 21rem;
 }
 
-.container-user-left {
-  display: flex;
-  justify-content: space-between;
-}
-
 .container-repos {
   display: flex;
   flex-direction: row;
@@ -135,6 +149,15 @@ main {
   color: var(--grayish-blue);
 }
 
+.inner-user {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  align-self: center;
+}
+
 .inner-location {
   display: flex;
   flex: 1 1 230px;
@@ -153,7 +176,7 @@ main {
   align-items: center;
   gap: 1rem;
 }
-.inner-github {
+.inner-office {
   display: flex;
   flex: 1 1 230px;
   align-items: center;
