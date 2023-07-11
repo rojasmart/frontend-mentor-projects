@@ -25,9 +25,15 @@ buttonFetch.addEventListener("click", () => {
   const fetchData = async (searchUser) => {
     try {
       const res = await fetch(`https://api.github.com/users/${searchUser}`);
-      const data = await res.json();
-      buildCard(data);
-      return data;
+      if (res.status === 404) {
+        errorInput();
+      } else if (res.ok) {
+        const errorMessage = document.querySelector(".error-search");
+        errorMessage.remove();
+        const data = await res.json();
+        buildCard(data);
+        return data;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -35,8 +41,15 @@ buttonFetch.addEventListener("click", () => {
   fetchData(searchUser);
 });
 
+const errorInput = () => {
+  const search = document.querySelector(".search");
+  const errorMessage = document.createElement("p");
+  errorMessage.classList.add("error-search");
+  errorMessage.innerHTML = "No results";
+  search.appendChild(errorMessage);
+};
+
 const buildCard = (data) => {
-  console.log(data);
   const dateData = new Date(data.created_at);
   let options = {
     day: "numeric",
