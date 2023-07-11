@@ -13,6 +13,13 @@ const twitter = document.querySelector(".inner-twitter p");
 const website = document.querySelector(".inner-website p");
 const office = document.querySelector(".inner-office p");
 
+inputSearch.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    buttonFetch.click();
+  }
+});
+
 buttonFetch.addEventListener("click", () => {
   const searchUser = inputSearch.value;
   const fetchData = async (searchUser) => {
@@ -38,8 +45,10 @@ const buildCard = (data) => {
   };
 
   imgUser.src = data.avatar_url;
-  userName.textContent =
-    data.name === "" || data.name === null ? "Not Available" : data.name;
+  userName.innerHTML =
+    data.name === "" || data.name === null
+      ? `<p class="not-available">Not Available</p>`
+      : data.name;
   nickName.textContent = `@${data.login}`;
 
   joinDate.textContent = `Joined ${new Intl.DateTimeFormat(
@@ -47,23 +56,27 @@ const buildCard = (data) => {
     options
   ).format(dateData)}`;
 
-  description.textContent =
-    data.bio === "" || data.bio === null ? "Not Available" : data.bio;
+  description.innerHTML =
+    data.bio === "" || data.bio === null
+      ? `<p class="not-available">Not Available</p>`
+      : data.bio;
   repos.textContent = data.public_repos;
   followers.textContent = data.followers;
   following.textContent = data.following;
-  localization.textContent =
+  localization.innerHTML =
     data.location === "" || data.location === null
-      ? "Not Available"
+      ? `<p class="not-available">Not Available</p>`
       : data.location;
-  twitter.textContent =
+  twitter.innerHTML =
     data.twitter_username === "" || data.twitter_username === null
-      ? "Not Available"
+      ? `<p class="not-available">Not Available</p>`
       : data.twitter_username;
-  website.textContent =
-    data.blog === "" || data.blog === null ? "Not Available" : data.blog;
-  office.textContent =
+  website.innerHTML =
+    data.blog === "" || data.blog === null
+      ? `<p class="not-available">Not Available</p>`
+      : data.blog;
+  office.innerHTML =
     data.company === "" || data.company === null
-      ? "Not Availale"
+      ? `<p class="not-available">Not Available</p>`
       : data.company;
 };
