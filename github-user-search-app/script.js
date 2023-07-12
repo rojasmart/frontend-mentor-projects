@@ -14,9 +14,7 @@ const twitter = document.querySelector(".inner-twitter p");
 const website = document.querySelector(".inner-website p");
 const office = document.querySelector(".inner-office p");
 
-setUpDarkMode();
-
-function setUpDarkMode() {
+const setUpDarkMode = () => {
   const themeBtn = document.getElementById("toggle-btn");
 
   function toggleThemeBtn() {
@@ -40,7 +38,9 @@ function setUpDarkMode() {
     document.documentElement.classList.toggle("dark");
     toggleThemeBtn();
   });
-}
+};
+
+setUpDarkMode();
 
 inputSearch.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
