@@ -166,8 +166,19 @@ ul > li:hover {
   color: var(--white);
 }
 
-@media only screen and (max-width: 768px) {
-}
-
-@media only screen and (min-width: 768px) and (max-width: 992px) {
+@media only screen and (max-width: 400px) {
+  body {
+    display: block;
+    padding: 1rem;
+  }
+  .container {
+    margin-top: 50%;
+    width: auto;
+  }
+  button {
+    width: 100%;
+  }
+  ul {
+    gap: 11px;
+  }
 }
