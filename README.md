@@ -8,4 +8,4 @@ This repository contains all my solutions to several frontend mentor challenges
 - Advice Generator App - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/advice-generator-app/)
 - Github User Search App - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/github-user-search-app/)
 - Interactive-rating-component - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/interactive-rating-component/)
-- Faq Accordion Card Main - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/frontend-mentor-projects/)
+- Faq Accordion Card Main - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/)
