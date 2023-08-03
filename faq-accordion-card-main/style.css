@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap");
+:root {
+  --very-dark-desaturated-blue: hsl(238, 29%, 16%);
+  --soft-red: hsl(14, 88%, 65%);
+  --soft-violet: hsl(273, 75%, 66%);
+  --soft-blue: hsl(240, 73%, 65%);
+  --very-dark-grayish-blue: hsl(237, 12%, 33%);
+  --dark-grayish-blue: hsl(240, 6%, 50%);
+  --light-grayish-blue: hsl(240, 5%, 91%);
+}
+
+* {
+  font-family: "Kumbh Sans", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #b068e9 0%, #6463e7 100%);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--light-blue);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 1.625rem;
+  color: #1e1f36;
+}
+
+h2 {
+  font-size: 1.375rem;
+  color: var(--dark-grayish-blue);
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.813rem;
+  font-weight: 400;
+  color: var(--grayish-blue);
+}
+
+.container {
+  width: 920px;
+  height: 509px;
+  border-radius: 23px;
+  background: #fff;
+  box-shadow: 0px 50px 50px -20px rgba(53, 18, 122, 0.5);
+  display: flex;
+  overflow: hidden;
+  position: static;
+}
+
+.right-container {
+  width: 50%;
+  flex: 2 1 0;
+}
+
+.left-container {
+  width: 50%;
+  flex: 2 1 0;
+  align-self: center;
+}
+
+.box {
+  margin-left: -93px;
+  top: 450px;
+  position: absolute;
+  z-index: 1;
+}
+.woman {
+  left: -19%;
+  position: relative;
+  top: 70px;
+}
+
+.image {
+  background: url(../faq-accordion-card-main/images/bg-pattern-desktop.svg);
+  background-position: 122% 73%;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  height: 100%;
+}
+
+.accordion {
+  background-color: #fff;
+  color: #444;
+  cursor: pointer;
+  padding: 18px 0;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e8e8ea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion:not(.active):hover {
+  color: var(--soft-red);
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion.active {
+  font-weight: 700;
+  border-bottom: none;
+}
+.accordion .icon {
+  transform: rotate(0deg);
+}
+.accordion.active .icon {
+  transform: rotate(180deg);
+}
+.background-mobile {
+  display: none;
+}
+.box-mobile {
+  display: none;
+}
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0px 0px 18px 0px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  color: var(--dark-grayish-blue);
+}
+.panel.active {
+  display: block;
+  border-bottom: 1px solid #e8e8ea;
+}
+
+main {
+  width: 80%;
+}
+.woman-mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    padding: 20px;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .woman {
+    display: none;
+  }
+  .woman-mobile {
+    display: block;
+    position: absolute;
+    width: 350px;
+    padding: 40px;
+    top: 19%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .box {
+    display: none;
+  }
+  .box-mobile {
+    top: 146px;
+    left: 122px;
+    position: absolute;
+    z-index: 1;
+    width: 25%;
+    margin-left: auto;
+    display: block;
+  }
+  .left-container {
+    padding: 32px;
+    width: auto;
+    flex: auto;
+    align-self: auto;
+  }
+  main {
+    width: auto;
+  }
+  .image {
+    background: none;
+  }
+  .background-mobile {
+    width: 140%;
+    margin-left: 62px;
+  }
+}
