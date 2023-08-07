@@ -9,3 +9,4 @@ This repository contains all my solutions to several frontend mentor challenges
 - Github User Search App - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/github-user-search-app/)
 - Interactive-rating-component - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/interactive-rating-component/)
 - Faq Accordion Card Main - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/)
+- Time Tracking Dashboard - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/time-tracking-dashboard-main/)
