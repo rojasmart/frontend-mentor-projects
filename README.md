@@ -10,3 +10,4 @@ This repository contains all my solutions to several frontend mentor challenges
 - Interactive-rating-component - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/interactive-rating-component/)
 - Faq Accordion Card Main - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/)
 - Time Tracking Dashboard - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/time-tracking-dashboard-main/)
+- interactive-card-details-form-main - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/interactive-card-details-form-main/)
