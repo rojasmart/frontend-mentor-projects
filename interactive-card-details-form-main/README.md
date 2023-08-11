@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/interactive-card-details-form-main)
-- Live Site URL: [Add live site URL here](https://interactive-card-details-form-binary.netlify.app/)
+- Solution URL: [https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/interactive-card-details-form-main](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/interactive-card-details-form-main)
+- Live Site URL: [https://interactive-card-details-form-binary.netlify.app/](https://interactive-card-details-form-binary.netlify.app/)
 
 ### Built with
 
