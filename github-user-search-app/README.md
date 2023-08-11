@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/github-user-search-app)
-- Live Site URL: [Add live site URL here](https://binarypsilocybin.github.io/frontend-mentor-projects/github-user-search-app/)
+- Solution URL: [https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/github-user-search-app](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/github-user-search-app)
+- Live Site URL: [https://binarypsilocybin.github.io/frontend-mentor-projects/github-user-search-app/](https://binarypsilocybin.github.io/frontend-mentor-projects/github-user-search-app/)
 
 ### Built with
 
