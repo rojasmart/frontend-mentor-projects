@@ -3,7 +3,7 @@ import cardLogo from "../images/card-logo.svg";
 
 const CreditCard = (props) => {
   const isSide = props.side ? "back" : "front";
-  const background = `./images/bg-card-${isSide}.png`;
+  const background = require(`./../images/bg-card-${isSide}.png`);
 
   const name = props.name || "Jane Appleseed";
   const month = props.month?.slice(0, 2).padStart(2, "0");
