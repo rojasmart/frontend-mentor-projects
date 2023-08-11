@@ -24,8 +24,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/expenses-chart-component)
-- Live Site URL: [Add live site URL here](https://binarypsilocybin.github.io/frontend-mentor-projects/expenses-chart-component/)
+- Solution URL: [https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/expenses-chart-component](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/expenses-chart-component)
+- Live Site URL: [https://binarypsilocybin.github.io/frontend-mentor-projects/expenses-chart-component/](https://binarypsilocybin.github.io/frontend-mentor-projects/expenses-chart-component/)
 
 ## My process
 
