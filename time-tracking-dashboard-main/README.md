@@ -23,8 +23,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/time-tracking-dashboard-main)
-- Live Site URL: [Add live site URL here](https://binarypsilocybin.github.io/frontend-mentor-projects/time-tracking-dashboard-main/)
+- Solution URL: [https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/time-tracking-dashboard-main](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/time-tracking-dashboard-main)
+- Live Site URL: [https://binarypsilocybin.github.io/frontend-mentor-projects/time-tracking-dashboard-main/](https://binarypsilocybin.github.io/frontend-mentor-projects/time-tracking-dashboard-main/)
 
 ## My process
 
