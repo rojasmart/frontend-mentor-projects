@@ -26,8 +26,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/faq-accordion-card-main)
-- Live Site URL: [Add live site URL here](https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/)
+- Solution URL: [https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/faq-accordion-card-main](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/faq-accordion-card-main)
+- Live Site URL: [https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/](https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/)
 
 ## My Process
 
