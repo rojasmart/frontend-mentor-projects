@@ -24,8 +24,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/advice-generator-app)
-- Live Site URL: [Add live site URL here](https://binarypsilocybin.github.io/frontend-mentor-projects/advice-generator-app/)
+- Solution URL: [https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/advice-generator-app](https://github.com/binarypsilocybin/frontend-mentor-projects/tree/main/advice-generator-app)
+- Live Site URL: [https://binarypsilocybin.github.io/frontend-mentor-projects/advice-generator-app/](https://binarypsilocybin.github.io/frontend-mentor-projects/advice-generator-app/)
 
 ## My process
 
