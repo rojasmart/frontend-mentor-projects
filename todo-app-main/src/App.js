@@ -1,4 +1,26 @@
+import React, { useState } from "react";
+import iconCross from "./images/icon-cross.svg";
+
 function App() {
+  const [inputValue, setInputValue] = useState("");
+  const [items, setItems] = useState([]);
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    setItems((prevItems) => [...prevItems, inputValue]);
+    setInputValue("");
+  };
+
+  const handleRemove = (index) => {
+    setItems((items) => {
+      return items.filter((_, i) => i !== index);
+    });
+  };
+
   return (
     <>
       <div className="container">
@@ -9,23 +31,35 @@ function App() {
         </header>
         <main>
           <section className="todo-wrapper">
-            <form className="todo-form">
+            <form className="todo-form" onSubmit={handleAdd}>
               <label className="todo-create">
-                <span class="todo-create__check"></span>
+                <span className="todo-create__check"></span>
                 <input
                   type="text"
                   className="todo"
                   placeholder="Create new todo..."
+                  value={inputValue}
+                  onChange={handleChange}
                 />
               </label>
             </form>
             <div className="todo-container">
               <div className="todo-list">
                 <ul>
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
+                  {items.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <span className="todo-create__check"></span>
+                        {item}
+                        <img
+                          className="todo-create__cross"
+                          src={iconCross}
+                          onClick={() => handleRemove(index)}
+                          alt="icon delete"
+                        />
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
