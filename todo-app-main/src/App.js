@@ -1,24 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import iconCross from "./images/icon-cross.svg";
 
+const getLocalStorage = () => {
+  let list = localStorage.getItem("todos");
+  if (list) {
+    return JSON.parse(localStorage.getItem("todos"));
+  } else {
+    return [];
+  }
+};
+
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [items, setItems] = useState([]);
+  const [todos, setTodos] = useState(getLocalStorage());
+  const [todo, setTodo] = useState("");
 
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
-  const handleAdd = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setItems((prevItems) => [...prevItems, inputValue]);
-    setInputValue("");
+    const newTodo = {
+      id: new Date().getTime(),
+      text: todo,
+      completed: false,
+    };
+    setTodos([...todos].concat(newTodo));
+    setTodo("");
   };
 
-  const handleRemove = (index) => {
-    setItems((items) => {
-      return items.filter((_, i) => i !== index);
+  const handleRemove = (id) => {
+    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
+  const handleComplete = (id) => {
+    console.log(id);
+    handleToggle(id);
+  };
+
+  const handleToggle = (id) => {
+    let mapped = todos.map((todo) => {
+      return todo.id === Number(id)
+        ? { ...todo, complete: !todo.complete }
+        : { ...todo };
     });
+    setTodos(mapped);
   };
 
   return (
@@ -31,37 +58,64 @@ function App() {
         </header>
         <main>
           <section className="todo-wrapper">
-            <form className="todo-form" onSubmit={handleAdd}>
+            <form className="todo-form" onSubmit={handleSubmit}>
               <label className="todo-create">
                 <span className="todo-create__check"></span>
                 <input
                   type="text"
                   className="todo"
                   placeholder="Create new todo..."
-                  value={inputValue}
-                  onChange={handleChange}
+                  value={todo}
+                  onChange={(e) => setTodo(e.target.value)}
                 />
               </label>
             </form>
             <div className="todo-container">
-              <div className="todo-list">
-                <ul>
-                  {items.map((item, index) => {
+              {todos.length > 0 ? (
+                <div className="todo-list">
+                  {todos.map((todo) => {
                     return (
-                      <li key={index}>
-                        <span className="todo-create__check"></span>
-                        {item}
+                      <article key={todo.id} className="todo-item">
+                        <div className="todo-item-content">
+                          <span
+                            className={
+                              todo.complete
+                                ? "todo-create__check completed"
+                                : "todo-create__check"
+                            }
+                            onClick={() => handleComplete(todo.id)}
+                          ></span>
+                          <input
+                            type="text"
+                            value={todo.text}
+                            onChange={(e) =>
+                              setTodos((prevTodos) =>
+                                prevTodos.map((prevTodo) => {
+                                  if (prevTodo.id !== todo.id) return prevTodo; // "todo" comes from the map loop
+
+                                  return {
+                                    ...prevTodo,
+                                    text: e.target.value,
+                                  };
+                                })
+                              )
+                            }
+                            className={todo.complete ? "strike" : ""}
+                          />
+                        </div>
                         <img
                           className="todo-create__cross"
                           src={iconCross}
-                          onClick={() => handleRemove(index)}
+                          onClick={() => handleRemove(todo.id)}
                           alt="icon delete"
                         />
-                      </li>
+                      </article>
                     );
                   })}
-                </ul>
-              </div>
+                </div>
+              ) : (
+                <p className="todo-alert">No todos</p>
+              )}
             </div>
           </section>
         </main>

@@ -98,10 +98,26 @@ header {
   height: 24px;
   border-radius: 50%;
   border: 1px solid var(--verylightgrayishblue);
+  cursor: pointer;
+}
+
+.todo-create__check.completed {
+  background: url("./images/icon-check.svg");
+  border: none;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: var(--lightgrayishblue);
+}
+
+.todo-create__cross {
+  display: none;
 }
 
 .todo-create__cross {
   cursor: pointer;
+  align-self: center;
 }
 
 .todo-form {
@@ -117,9 +133,23 @@ header {
   box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   padding: 1.25rem 1.5rem;
 }
+.todo-alert {
+  display: flex;
+  justify-content: center;
+}
 
-.todo-list li {
+.todo-item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.5rem;
+}
+
+.todo-item:hover .todo-create__cross {
+  display: block;
+}
+
+.todo-item-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
