@@ -13,6 +13,8 @@ const getLocalStorage = () => {
 function App() {
   const [todos, setTodos] = useState(getLocalStorage());
   const [todo, setTodo] = useState("");
+  console.log(todos);
+  const filtered = todos.filter((todo) => todo.complete === false);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -20,13 +22,15 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTodo = {
-      id: new Date().getTime(),
-      text: todo,
-      completed: false,
-    };
-    setTodos([...todos].concat(newTodo));
-    setTodo("");
+    if (todo) {
+      const newTodo = {
+        id: new Date().getTime(),
+        text: todo,
+        complete: false,
+      };
+      setTodos([...todos].concat(newTodo));
+      setTodo("");
+    }
   };
 
   const handleRemove = (id) => {
@@ -35,7 +39,6 @@ function App() {
   };
 
   const handleComplete = (id) => {
-    console.log(id);
     handleToggle(id);
   };
 
@@ -46,6 +49,22 @@ function App() {
         : { ...todo };
     });
     setTodos(mapped);
+  };
+
+  const filterAll = () => {
+    console.log("filterAll");
+  };
+
+  const filterActive = () => {
+    console.log("filterActive");
+  };
+
+  const filterComplete = () => {
+    console.log("filterComplete");
+  };
+
+  const clearCompleted = () => {
+    console.log("clearCompleted");
   };
 
   return (
@@ -63,7 +82,7 @@ function App() {
                 <span className="todo-create__check"></span>
                 <input
                   type="text"
-                  className="todo"
+                  className="todo-text-search"
                   placeholder="Create new todo..."
                   value={todo}
                   onChange={(e) => setTodo(e.target.value)}
@@ -100,7 +119,7 @@ function App() {
                                 })
                               )
                             }
-                            className={todo.complete ? "strike" : ""}
+                            className={todo.complete ? "strike" : "todo-text"}
                           />
                         </div>
                         <img
@@ -109,6 +128,7 @@ function App() {
                           onClick={() => handleRemove(todo.id)}
                           alt="icon delete"
                         />
+                        <span className="todo-border"></span>
                       </article>
                     );
                   })}
@@ -116,6 +136,19 @@ function App() {
               ) : (
                 <p className="todo-alert">No todos</p>
               )}
+              <div className="todo-action">
+                <div className="todo-length">
+                  <p>{filtered.length} items left</p>
+                </div>
+                <div className="todo-filters">
+                  <p onClick={filterAll}>All</p>
+                  <p onClick={filterActive}>Active</p>
+                  <p onClick={filterComplete}>Complete</p>
+                </div>
+                <div className="todo-clear" onClick={clearCompleted}>
+                  Clear Completed
+                </div>
+              </div>
             </div>
           </section>
         </main>
