@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import iconCross from "./images/icon-cross.svg";
+import TodoList from "./components/TodoList";
+import FilterList from "./components/FilterList";
 
 const getLocalStorage = () => {
   let list = localStorage.getItem("todos");
@@ -10,11 +11,20 @@ const getLocalStorage = () => {
   }
 };
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (todo) => !todo.complete,
+  Completed: (todo) => todo.complete,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 function App() {
   const [todos, setTodos] = useState(getLocalStorage());
   const [todo, setTodo] = useState("");
-  console.log(todos);
-  const filtered = todos.filter((todo) => todo.complete === false);
+  const [filter, setFilter] = useState("All");
+
+  // const filtered = todos.filter((todo) => todo.complete === false);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -31,6 +41,19 @@ function App() {
       setTodos([...todos].concat(newTodo));
       setTodo("");
     }
+  };
+
+  const onChange = (e) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((prevTodo) => {
+        if (prevTodo.id !== todo.id) return prevTodo;
+
+        return {
+          ...prevTodo,
+          text: e.target.value,
+        };
+      })
+    );
   };
 
   const handleRemove = (id) => {
@@ -51,21 +74,29 @@ function App() {
     setTodos(mapped);
   };
 
-  const filterAll = () => {
-    console.log("filterAll");
-  };
+  const taskList = todos
+    .filter(FILTER_MAP[filter])
+    .map((todo) => (
+      <TodoList
+        todos={todos}
+        id={todo.id}
+        name={todo.text}
+        completed={todo.complete}
+        key={todo.id}
+        handleComplete={handleComplete}
+        handleRemove={handleRemove}
+        onChange={onChange}
+      />
+    ));
 
-  const filterActive = () => {
-    console.log("filterActive");
-  };
-
-  const filterComplete = () => {
-    console.log("filterComplete");
-  };
-
-  const clearCompleted = () => {
-    console.log("clearCompleted");
-  };
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterList
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
+    />
+  ));
 
   return (
     <>
@@ -90,65 +121,8 @@ function App() {
               </label>
             </form>
             <div className="todo-container">
-              {todos.length > 0 ? (
-                <div className="todo-list">
-                  {todos.map((todo) => {
-                    return (
-                      <article key={todo.id} className="todo-item">
-                        <div className="todo-item-content">
-                          <span
-                            className={
-                              todo.complete
-                                ? "todo-create__check completed"
-                                : "todo-create__check"
-                            }
-                            onClick={() => handleComplete(todo.id)}
-                          ></span>
-                          <input
-                            type="text"
-                            value={todo.text}
-                            onChange={(e) =>
-                              setTodos((prevTodos) =>
-                                prevTodos.map((prevTodo) => {
-                                  if (prevTodo.id !== todo.id) return prevTodo; // "todo" comes from the map loop
-
-                                  return {
-                                    ...prevTodo,
-                                    text: e.target.value,
-                                  };
-                                })
-                              )
-                            }
-                            className={todo.complete ? "strike" : "todo-text"}
-                          />
-                        </div>
-                        <img
-                          className="todo-create__cross"
-                          src={iconCross}
-                          onClick={() => handleRemove(todo.id)}
-                          alt="icon delete"
-                        />
-                        <span className="todo-border"></span>
-                      </article>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p className="todo-alert">No todos</p>
-              )}
-              <div className="todo-action">
-                <div className="todo-length">
-                  <p>{filtered.length} items left</p>
-                </div>
-                <div className="todo-filters">
-                  <p onClick={filterAll}>All</p>
-                  <p onClick={filterActive}>Active</p>
-                  <p onClick={filterComplete}>Complete</p>
-                </div>
-                <div className="todo-clear" onClick={clearCompleted}>
-                  Clear Completed
-                </div>
-              </div>
+              {taskList}
+              <div className="todo-action">{filterList}</div>
             </div>
           </section>
         </main>

@@ -195,3 +195,15 @@ header {
   display: flex;
   gap: 1rem;
 }
+
+.todo-clear {
+  cursor: pointer;
+}
+
+.todo-length {
+  cursor: pointer;
+}
+
+.todo-filters {
+  cursor: pointer;
+}
