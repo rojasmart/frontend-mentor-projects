@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import FilterList from "./components/FilterList";
 import moon from "./images/icon-moon.svg";
+import sun from "./images/icon-sun.svg";
 import useLocalStorage from "use-local-storage";
 
 const getLocalStorage = () => {
@@ -119,17 +120,29 @@ function App() {
   return (
     <>
       <div className="container" data-theme={theme}>
-        <div className="background-image"></div>
+        {theme === "light" ? (
+          <div className="background-image-dark"></div>
+        ) : (
+          <div className="background-image-light"></div>
+        )}
         <header className="header">
           <h1 className="title">TODO</h1>
-          <button onClick={switchTheme}>
-            <img src={moon} alt="toogle-theme" />
-            {theme === "light" ? "Dark" : "Light"}
+          <button className="toggle-theme-btn" onClick={switchTheme}>
+            {theme === "light" ? (
+              <img src={moon} alt="toogle-theme" />
+            ) : (
+              <img src={sun} alt="toogle-theme" />
+            )}
           </button>
         </header>
         <main>
           <section className="todo-wrapper">
-            <form className="todo-form" onSubmit={handleSubmit}>
+            <form
+              className={
+                theme === "light" ? "todo-form-light" : "todo-form-dark"
+              }
+              onSubmit={handleSubmit}
+            >
               <label className="todo-create">
                 <span className="todo-create__check"></span>
                 <input
@@ -141,7 +154,13 @@ function App() {
                 />
               </label>
             </form>
-            <div className="todo-container">
+            <div
+              className={
+                theme === "light"
+                  ? "todo-container-light"
+                  : "todo-container-dark"
+              }
+            >
               {taskList}
               <div className="todo-action">
                 <div className="todo-length">
