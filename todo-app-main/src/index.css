@@ -7,20 +7,28 @@
 }
 
 :root {
+  /* Primary  */
   --brightblue: hsl(220, 98%, 61%);
   --checkbrackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
-  --verydarkgray: hsl(0, 0%, 98%);
-  --verylightgrayishblue: hsl(236, 33%, 92%);
+
+  /* Light theme */
+  --background: hsl(0, 0%, 98%);
+  --background-container: white;
+  --verylightgray: hsl(0, 0%, 98%);
   --lightgrayishblue: hsl(233, 11%, 84%);
+  --fontcolor: hsla(235, 9%, 61%, 1);
   --darkgrayishblue: hsl(236, 9%, 61%);
   --verydarkgrayishblue: hsl(235, 19%, 35%);
-  --verydarkblue: hsl(235, 21%, 11%);
-  --verydarkdesaturatedblue: hsl(235, 24%, 19%);
-  --lightgrayishblue: hsl(234, 39%, 85%);
+  --verylightgrayishblue: hsl(236, 32%, 92%, 1);
+}
+
+[data-theme="dark"] {
+  --background: hsl(235, 21%, 11%);
+  --background-container: hsl(235, 24%, 19%);
   --lightgrayishbluehover: hsl(236, 33%, 92%);
   --darkgrayishblue: hsl(234, 11%, 52%);
 
-  --verydarkgrayishbluenew: hsl(237, 14%, 26%);
+  --verydarkgrayishbluesecond: hsl(237, 14%, 26%);
 }
 
 ol,
@@ -29,6 +37,10 @@ menu {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+p {
+  color: var(--fontcolor);
 }
 
 input,
@@ -43,7 +55,6 @@ input:focus {
 
 body {
   font-family: "Josefin Sans", sans-serif;
-  background-color: white;
   overflow-x: hidden;
   font-size: 1.125rem;
 }
@@ -89,6 +100,7 @@ header {
   min-width: 375px;
   padding: 0 var(--sz-content-side-padding);
   z-index: 10;
+  background-color: var(--background);
 }
 
 .todo-create {
@@ -206,4 +218,20 @@ header {
 
 .todo-filters {
   cursor: pointer;
+}
+
+.todo-filters {
+  font-weight: 700;
+}
+
+.todo-filters p:hover {
+  color: var(--verydarkgrayishblue);
+}
+
+.todo-clear p:hover {
+  color: var(--verydarkgrayishblue);
+}
+
+.todo-filters p:first-of-type {
+  color: var(--brightblue);
 }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TodoList from "./components/TodoList";
 import FilterList from "./components/FilterList";
+import moon from "./images/icon-moon.svg";
+import useLocalStorage from "use-local-storage";
 
 const getLocalStorage = () => {
   let list = localStorage.getItem("todos");
@@ -24,7 +26,18 @@ function App() {
   const [todo, setTodo] = useState("");
   const [filter, setFilter] = useState("All");
 
-  // const filtered = todos.filter((todo) => todo.complete === false);
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
+  const filtered = todos.filter((todo) => todo.complete === false);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -74,6 +87,11 @@ function App() {
     setTodos(mapped);
   };
 
+  const clearTodos = () => {
+    let clearTodos = [...todos].filter((todo) => todo.complete !== true);
+    return setTodos(clearTodos);
+  };
+
   const taskList = todos
     .filter(FILTER_MAP[filter])
     .map((todo) => (
@@ -100,11 +118,14 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className="container" data-theme={theme}>
         <div className="background-image"></div>
         <header className="header">
           <h1 className="title">TODO</h1>
-          <button className="toggle-theme">toggle</button>
+          <button onClick={switchTheme}>
+            <img src={moon} alt="toogle-theme" />
+            {theme === "light" ? "Dark" : "Light"}
+          </button>
         </header>
         <main>
           <section className="todo-wrapper">
@@ -122,7 +143,15 @@ function App() {
             </form>
             <div className="todo-container">
               {taskList}
-              <div className="todo-action">{filterList}</div>
+              <div className="todo-action">
+                <div className="todo-length">
+                  <p>{filtered.length} items left</p>
+                </div>
+                <div className="todo-filters">{filterList}</div>
+                <div className="todo-clear">
+                  <p onClick={() => clearTodos()}>Clear Completed</p>
+                </div>
+              </div>
             </div>
           </section>
         </main>
