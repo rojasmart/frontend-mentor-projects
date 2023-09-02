@@ -51,6 +51,7 @@ input:focus {
   font-size: 1.125rem;
   letter-spacing: -0.25px;
   flex: 1 1;
+  color: #9495a5;
 }
 
 body {
@@ -131,6 +132,22 @@ header {
   cursor: pointer;
 }
 
+.todo-container-dark .todo-create__check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--verydarkgrayishbluesecond);
+  cursor: pointer;
+}
+
+.todo-form-dark .todo-create__check {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--verydarkgrayishbluesecond);
+  cursor: pointer;
+}
+
 .todo-create__check.completed {
   background: url("./images/icon-check.svg");
   border: none;
@@ -143,6 +160,14 @@ header {
 
 .todo-text {
   color: var(--verydarkgrayishblue);
+}
+
+.todo-container-dark .todo-text {
+  color: #c8cbe7;
+}
+
+.todo-container-dark .strike {
+  color: #4d5067;
 }
 
 ::placeholder {
@@ -199,6 +224,18 @@ header {
   gap: 1.5rem;
 }
 
+.todo-container-dark input {
+  background: var(--background-container);
+}
+
+.todo-container-dark .todo-border {
+  width: 441px;
+  position: absolute;
+  border-bottom: 1px solid var(--verydarkgrayishbluesecond);
+  margin-top: 36px;
+  margin-left: -25px;
+}
+
 .todo-list {
   display: flex;
   flex-direction: column;
@@ -224,6 +261,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .todo-action {
@@ -272,4 +310,8 @@ header {
   background-color: transparent;
   cursor: pointer;
   padding: 0.12rem 0.12rem 0 0.12rem;
+}
+
+.todo-text-search-dark {
+  background: var(--background-container);
 }

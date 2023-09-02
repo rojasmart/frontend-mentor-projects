@@ -57,10 +57,10 @@ function App() {
     }
   };
 
-  const onChange = (e) => {
+  const onChange = (e, id) => {
     setTodos((prevTodos) =>
       prevTodos.map((prevTodo) => {
-        if (prevTodo.id !== todo.id) return prevTodo;
+        if (prevTodo.id !== id) return prevTodo;
 
         return {
           ...prevTodo,
@@ -147,7 +147,11 @@ function App() {
                 <span className="todo-create__check"></span>
                 <input
                   type="text"
-                  className="todo-text-search"
+                  className={
+                    theme === "light"
+                      ? "todo-text-search"
+                      : "todo-text-search-dark"
+                  }
                   placeholder="Create new todo..."
                   value={todo}
                   onChange={(e) => setTodo(e.target.value)}

@@ -27,7 +27,7 @@ const TodoList = ({
               <input
                 type="text"
                 value={name}
-                onChange={(e) => onChange(e)}
+                onChange={(e) => onChange(e, id)}
                 className={completed ? "strike" : "todo-text"}
               />
             </div>
