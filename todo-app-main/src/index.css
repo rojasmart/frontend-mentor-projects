@@ -39,8 +39,13 @@ menu {
   padding: 0;
 }
 
-p {
+button {
   color: var(--fontcolor);
+  border: none;
+  border-radius: var(--radius-outline);
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Josefin Sans";
 }
 
 input,
@@ -284,23 +289,20 @@ header {
   cursor: pointer;
 }
 
-.todo-filters {
+.todo-filters button {
   cursor: pointer;
-}
-
-.todo-filters {
   font-weight: 700;
 }
 
-.todo-filters p:hover {
+.todo-filters button:hover {
   color: var(--verydarkgrayishblue);
 }
 
-.todo-clear p:hover {
+.todo-clear button:hover {
   color: var(--verydarkgrayishblue);
 }
 
-.todo-filters p.active {
+.todo-filters button.active {
   color: var(--brightblue);
 }
 

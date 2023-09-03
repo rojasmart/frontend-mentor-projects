@@ -168,11 +168,11 @@ function App() {
               {taskList}
               <div className="todo-action">
                 <div className="todo-length">
-                  <p>{filtered.length} items left</p>
+                  <button>{filtered.length} items left</button>
                 </div>
                 <div className="todo-filters">{filterList}</div>
                 <div className="todo-clear">
-                  <p onClick={() => clearTodos()}>Clear Completed</p>
+                  <button onClick={() => clearTodos()}>Clear Completed</button>
                 </div>
               </div>
             </div>

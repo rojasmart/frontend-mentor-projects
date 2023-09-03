@@ -3,14 +3,14 @@ import React from "react";
 const FilterList = (props) => {
   return (
     <>
-      <p
+      <button
         className={props.isPressed ? "active" : ""}
         onClick={() => {
           props.setFilter(props.name);
         }}
       >
         {props.name}
-      </p>
+      </button>
     </>
   );
 };
