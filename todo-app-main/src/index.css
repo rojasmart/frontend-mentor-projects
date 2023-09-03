@@ -261,7 +261,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  width: 100%;
+  width: 90%;
 }
 
 .todo-action {
@@ -300,7 +300,7 @@ header {
   color: var(--verydarkgrayishblue);
 }
 
-.todo-filters p:first-of-type {
+.todo-filters p.active {
   color: var(--brightblue);
 }
 
