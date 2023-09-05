@@ -15,21 +15,19 @@
   --shuttle-gray: #5c6779;
 
   --lineheight--sm: 1.3em;
-  --lineheight--md: 1.5em;
-  --lineheight--lg: 2em;
-  --lineheight--lg-xl: 3em;
 
-  --font-heading-xl: 4.4rem;
-  --font-heading-l: 3.1rem;
-  --font-heading-m: 1.7rem;
-  --font-heading-s: 1.7rem;
+  --font-heading-xl: 5rem;
+  --font-heading-l: 3rem;
+  --font-heading-m: 1.25rem;
+  --font-heading-s: 1.063rem;
 
-  --font-body-1: 20px;
-  --font-body-2: 16px;
+  --font-body-1: 1.25rem;
+  --font-body-2: 1rem;
 
-  --font-weight-lg: light;
-  --font-weight-md: normal;
-  --font-weight-bl: bold;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
 }
 
 body {
