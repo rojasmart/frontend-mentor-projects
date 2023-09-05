@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700&family=Roboto:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #ffffff;
+  --beaver: #9e7f66;
+  --cod-gray: #111111;
+  --mirage: #17192b;
+  --ebony-clay: #242b37;
+  --shuttle-gray: #5c6779;
+
+  --lineheight--sm: 1.3em;
+  --lineheight--md: 1.5em;
+  --lineheight--lg: 2em;
+  --lineheight--lg-xl: 3em;
+
+  --font-heading-xl: 4.4rem;
+  --font-heading-l: 3.1rem;
+  --font-heading-m: 1.7rem;
+  --font-heading-s: 1.7rem;
+
+  --font-body-1: 20px;
+  --font-body-2: 16px;
+
+  --font-weight-lg: light;
+  --font-weight-md: normal;
+  --font-weight-bl: bold;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "League Spartan", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button .dark {
+  border: 1px solid var(--white);
+}
+
+button .light {
+  border: 1px solid var(--cod-gray);
+}
+
+button:hover .dark {
+}
+
+button:hover .light {
+}
