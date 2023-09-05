@@ -11,3 +11,4 @@ This repository contains all my solutions to several frontend mentor challenges
 - Faq Accordion Card - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/faq-accordion-card-main/)
 - Time Tracking Dashboard - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/time-tracking-dashboard-main/)
 - Interactive Card Details Form - [Click Here](https://interactive-card-details-form-binary.netlify.app/)
+- Todo App - [Click Here](https://todo-app-main-binary.netlify.app/)
