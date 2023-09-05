@@ -35,8 +35,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/todo-app-react-js-KnCZN4t44S)
+- [Live Site URL](https://todo-app-main-xi-mauve.vercel.app/)
 
 ## My process
 
