@@ -37,6 +37,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: var(--font-body-1);
+  font-weight: var(--font-weight-regular);
 }
 
 button .dark {
@@ -47,8 +49,36 @@ button .light {
   border: 1px solid var(--cod-gray);
 }
 
-button:hover .dark {
+/* button:hover .dark {
 }
 
 button:hover .light {
+} */
+
+h1 {
+  font-size: var(--font-heading-xl);
+  font-weight: var(--font-weight-light);
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: var(--font-heading-l);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-size: var(--font-heading-m);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.25px;
+}
+
+h4 {
+  font-size: var(--font-heading-s);
+  font-weight: var(--font-weight-semi-bold);
+  letter-spacing: 2.5px;
+}
+
+.hero {
+  background-color: var(--cod-gray);
 }
