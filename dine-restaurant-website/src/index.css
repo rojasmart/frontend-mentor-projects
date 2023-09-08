@@ -14,7 +14,8 @@
   --ebony-clay: #242b37;
   --shuttle-gray: #5c6779;
 
-  --lineheight--sm: 1.3em;
+  --lineheight--sm: 1.3rem;
+  --lineheight--lg: 1.875rem;
 
   --font-heading-xl: 5rem;
   --font-heading-l: 3rem;
@@ -49,6 +50,20 @@ button .light {
   border: 1px solid var(--cod-gray);
 }
 
+.hero-button {
+  border: 2px solid var(--white);
+  background-color: #ffffff00;
+  color: var(--white);
+  padding: 1.2rem 2rem;
+  letter-spacing: 2.5px;
+  font-size: 1.063rem;
+  cursor: pointer;
+  width: 245px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 3rem;
+}
+
 /* button:hover .dark {
 }
 
@@ -79,6 +94,71 @@ h4 {
   letter-spacing: 2.5px;
 }
 
-.hero {
+.header-container,
+.hero-container,
+.footer-container {
+  max-width: 1106px;
+  margin: 0 auto;
+}
+
+header {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  padding: 50px 0px 0px 0px;
+  margin: 0;
+}
+
+footer {
   background-color: var(--cod-gray);
+}
+
+footer p {
+  color: var(--white);
+}
+
+.hero {
+  background-image: url(./images/homepage/hero-bg-desktop.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-container {
+  height: 754px;
+}
+
+.hero-text {
+  color: white;
+  padding-top: 230px;
+  width: 508px;
+}
+
+.hero-content {
+  margin-top: 1rem;
+  line-height: var(--lineheight--lg);
+}
+
+@media (max-width: 1052px) {
+  header {
+    display: flex;
+    margin-top: 370px;
+  }
+  .hero {
+    background-image: url(./images/homepage/hero-bg-tablet.jpg);
+    background-position: initial;
+  }
+  .hero-container {
+    height: 950px;
+  }
+  .hero-text {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 570px;
+  }
 }
