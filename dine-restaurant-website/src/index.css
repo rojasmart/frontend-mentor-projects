@@ -80,6 +80,8 @@ h2 {
   font-size: var(--font-heading-l);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.5px;
+  line-height: 1.4;
+  color: var(--ebony-clay);
 }
 
 h3 {
@@ -96,6 +98,7 @@ h4 {
 
 .header-container,
 .hero-container,
+.middle-container,
 .footer-container {
   max-width: 1106px;
   margin: 0 auto;
@@ -103,7 +106,7 @@ h4 {
 
 header {
   color: white;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -143,22 +146,104 @@ footer p {
   line-height: var(--lineheight--lg);
 }
 
+.middle {
+  background-image: url(./images/patterns/pattern-curve-top-right.svg),
+    url(./images/patterns/pattern-curve-top-left.svg);
+  background-repeat: no-repeat;
+  background-position-y: 14.2rem, bottom;
+  background-position-x: left, right;
+}
+
+.middle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.middle-family,
+.middle-locally {
+  display: flex;
+  gap: 9rem;
+}
+
+.middle-locally {
+  flex-direction: row-reverse;
+  position: relative;
+}
+
+.middle-content {
+  align-self: center;
+}
+
+.middle-body-text {
+  font-size: 1.125rem;
+  line-height: 30px;
+  letter-spacing: -0.225px;
+  color: var(--ebony-clay);
+}
+
+.middle-image img {
+  transform: translateY(-7rem);
+  box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
+}
+
+.middle-pattern {
+  position: absolute;
+  z-index: 1;
+  left: 990px;
+  top: 180px;
+}
+
 @media (max-width: 1052px) {
+  h1 {
+    font-size: 4.8rem;
+    line-height: 1.333;
+    letter-spacing: -0.6px;
+  }
   header {
     display: flex;
     margin-top: 370px;
   }
+
   .hero {
     background-image: url(./images/homepage/hero-bg-tablet.jpg);
     background-position: initial;
   }
+
   .hero-container {
     height: 950px;
   }
+
   .hero-text {
     width: 500px;
     text-align: center;
     margin: 0 auto;
     padding-top: 570px;
+  }
+}
+
+@media (max-width: 587px) {
+  h1 {
+    font-size: 3.2rem;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+  }
+  header {
+    position: absolute;
+    margin-top: 200px;
+  }
+
+  .hero {
+    background-image: url(./images/homepage/hero-bg-mobile.jpg);
+    background-position: initial;
+  }
+
+  .hero-container {
+    height: auto;
+  }
+
+  .hero-text {
+    width: 100%;
+    padding-top: 340px;
   }
 }
