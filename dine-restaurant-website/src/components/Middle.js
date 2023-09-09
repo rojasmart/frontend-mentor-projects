@@ -9,7 +9,7 @@ const Middle = () => {
     <section className="middle">
       <div className="middle-container">
         <div className="middle-family">
-          <div className="middle-image">
+          <div className="middle-image first">
             <img src={MiddleImageLeft} alt="image_trees" />
           </div>
           <div className="middle-content">
@@ -26,7 +26,7 @@ const Middle = () => {
           <div className="middle-pattern">
             <img src={Pattern} alt="pattern" />
           </div>
-          <div className="middle-image">
+          <div className="middle-image second">
             <img src={MiddleImageRight} alt="image_trees" />
           </div>
           <div className="middle-content">

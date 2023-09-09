@@ -99,8 +99,9 @@ h4 {
 .header-container,
 .hero-container,
 .middle-container,
+.highlights-container,
 .footer-container {
-  max-width: 1106px;
+  max-width: 1110px;
   margin: 0 auto;
 }
 
@@ -157,7 +158,6 @@ footer p {
 .middle-container {
   display: flex;
   flex-direction: column;
-  gap: 6rem;
 }
 
 .middle-family,
@@ -166,9 +166,14 @@ footer p {
   gap: 9rem;
 }
 
+.middle-family {
+  margin-bottom: -9rem;
+}
+
 .middle-locally {
   flex-direction: row-reverse;
   position: relative;
+  margin-bottom: 9rem;
 }
 
 .middle-content {
@@ -183,15 +188,36 @@ footer p {
 }
 
 .middle-image img {
-  transform: translateY(-7rem);
   box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
+}
+
+.first {
+  transform: translateY(-7rem);
+}
+
+.second {
+  transform: translateY(8rem);
 }
 
 .middle-pattern {
   position: absolute;
   z-index: 1;
-  left: 990px;
+  left: 975px;
   top: 180px;
+}
+
+.highlights {
+  background-color: var(--cod-gray);
+  color: white;
+}
+
+.highlights-container {
+  display: flex;
+  padding: 9rem 0;
+}
+
+.highlights-title {
+  color: white;
 }
 
 @media (max-width: 1052px) {
