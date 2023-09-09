@@ -1,5 +1,8 @@
 import React from "react";
 import Divider from "../images/patterns/pattern-divide.svg";
+import Salmon from "../images/homepage/salmon-desktop-tablet.jpg";
+import Beef from "../images/homepage/beef-desktop-tablet.jpg";
+import Chocolate from "../images/homepage/chocolate-desktop-tablet.jpg";
 
 const Highlights = () => {
   return (
@@ -15,31 +18,37 @@ const Highlights = () => {
           </p>
         </div>
         <div className="highlights-items">
-          <div className="highlight-item">
-            <div className="highlight-item-image"></div>
-            <div className="highlight-item-body">
-              <h3 className="highlight-item-title">Seared Salmon Fillet</h3>
-              <p className="highlight-item-text">
+          <div className="highlights-item">
+            <div className="highlights-item-image salmon"></div>
+            <div className="highlights-item-body">
+              <h3 className="highlights-item-title">Seared Salmon Fillet</h3>
+              <p className="highlights-item-text">
                 Our locally sourced salmon served with a refreshing buckwheat
                 summer salad.
               </p>
             </div>
           </div>
-          <div className="highlight-item">
-            <h3 className="highlight-item-title">Rosemary Filet Mignon</h3>
-            <p className="highlight-item-text">
-              Our prime beef served to your taste with a delicious choice of
-              seasonal sides.
-            </p>
+          <div className="highlights-item">
+            <div className="highlights-item-image beef"></div>
+            <div className="highlights-item-body">
+              <h3 className="highlights-item-title">Rosemary Filet Mignon</h3>
+              <p className="highlights-item-text">
+                Our prime beef served to your taste with a delicious choice of
+                seasonal sides.
+              </p>
+            </div>
           </div>
-          <div className="highlight-item">
-            <h3 className="highlight-item-title">
-              Summer Fruit Chocolate Mousse
-            </h3>
-            <p className="highlight-item-text">
-              Creamy mousse combined with summer fruits and dark chocolate
-              shavings.
-            </p>
+          <div className="highlights-item">
+            <div className="highlights-item-image chocolate"></div>
+            <div className="highlights-item-body">
+              <h3 className="highlights-item-title">
+                Summer Fruit Chocolate Mousse
+              </h3>
+              <p className="highlights-item-text">
+                Creamy mousse combined with summer fruits and dark chocolate
+                shavings.
+              </p>
+            </div>
           </div>
         </div>
       </div>

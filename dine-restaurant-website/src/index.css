@@ -167,7 +167,7 @@ footer p {
 }
 
 .middle-family {
-  margin-bottom: -9rem;
+  margin-bottom: -8rem;
 }
 
 .middle-locally {
@@ -192,11 +192,11 @@ footer p {
 }
 
 .first {
-  transform: translateY(-7rem);
+  transform: translateY(-4rem);
 }
 
 .second {
-  transform: translateY(8rem);
+  transform: translateY(10rem);
 }
 
 .middle-pattern {
@@ -209,6 +209,7 @@ footer p {
 .highlights {
   background-color: var(--cod-gray);
   color: white;
+  margin-top: -3rem;
 }
 
 .highlights-container {
@@ -216,8 +217,60 @@ footer p {
   padding: 9rem 0;
 }
 
+.highlights-content {
+  flex: 2 2 auto;
+}
+
 .highlights-title {
   color: white;
+}
+
+.salmon {
+  background-image: url(./images/homepage/salmon-desktop-tablet.jpg);
+}
+
+.beef {
+  background-image: url(./images/homepage/beef-desktop-tablet.jpg);
+}
+
+.chocolate {
+  background-image: url(./images/homepage/chocolate-desktop-tablet.jpg);
+}
+
+.highlights-item {
+  display: flex;
+  gap: 5rem;
+}
+
+.highlights-item:not(:last-child) {
+  margin-bottom: -0.6rem;
+  border-bottom: 1px solid #ffffff17;
+  padding-bottom: 2.4rem;
+}
+
+.highlights-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.highlights-item-image {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.highlights-item-image::after {
+  content: " ";
+  width: 3.2rem;
+  height: 1px;
+  background-color: var(--beaver);
+  position: absolute;
+  right: 0;
+  top: 1.6rem;
+  -webkit-transform: translateX(3.2rem);
+  transform: translateX(3.2rem);
 }
 
 @media (max-width: 1052px) {
