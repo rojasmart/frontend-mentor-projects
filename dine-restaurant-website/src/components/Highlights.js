@@ -12,9 +12,8 @@ const Highlights = () => {
           <img src={Divider} alt="image_divider" />
           <h2 className="highlights-title">A few highlights from our menu</h2>
           <p className="highlights-body-text">
-            from our menu We cater for all dietary requirements, but here’s a
-            glimpse at some of our diner’s favourites. Our menu is revamped
-            every season.
+            We cater for all dietary requirements, but here’s a glimpse at some
+            of our diner’s favourites. Our menu is revamped every season.
           </p>
         </div>
         <div className="highlights-items">
