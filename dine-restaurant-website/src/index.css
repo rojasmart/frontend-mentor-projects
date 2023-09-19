@@ -102,6 +102,18 @@ button .light {
   margin-top: 3rem;
 }
 
+.calltoaction-button {
+  border: 2px solid var(--white);
+  background-color: #11111100;
+  color: var(--white);
+  padding: 1.2rem 2rem;
+  letter-spacing: 2.5px;
+  font-size: 1.063rem;
+  cursor: pointer;
+  width: 245px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
 /* button:hover .dark {
 }
 
@@ -139,7 +151,8 @@ h4 {
 .middle-container,
 .highlights-container,
 .gathering-container,
-.footer-container {
+.footer-container,
+.calltoaction-container {
   max-width: 1110px;
   margin: 0 auto;
 }
@@ -161,6 +174,7 @@ footer {
 
 footer p {
   color: var(--white);
+  margin-top: 1rem;
 }
 
 .hero {
@@ -226,12 +240,12 @@ footer p {
   color: var(--ebony-clay);
 }
 
-.middle-image img:not(:last-child) {
-  box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
-}
-
 .first {
   transform: translateY(-4rem);
+}
+
+.first img {
+  box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
 }
 
 .second {
@@ -375,6 +389,49 @@ footer p {
 
 .gathering-underline.active {
   opacity: 1;
+}
+
+.gathering-slider-container img {
+  box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
+}
+
+.calltoaction-content {
+  padding: 8 8rem;
+}
+
+.calltoaction {
+  background-image: url(./images/homepage/ready-bg-desktop.jpg);
+  padding: 5.4rem 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.calltoaction-container h2 {
+  color: white;
+}
+
+.calltoaction-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  padding: 7.8rem 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  flex: 1 1 20%;
+}
+
+.footer-content {
+  display: flex;
+  flex: 1 1 50%;
+  justify-content: space-between;
 }
 
 @media (max-width: 1052px) {

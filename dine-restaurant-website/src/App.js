@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Middle from "./components/Middle";
 import Highlights from "./components/Highlights";
 import Gathering from "./components/Gathering";
+import CallToAction from "./components/CallToAction";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Middle />
         <Highlights />
         <Gathering />
+        <CallToAction />
       </main>
       <Footer />
     </div>
