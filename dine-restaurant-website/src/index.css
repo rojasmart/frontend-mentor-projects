@@ -191,6 +191,7 @@ footer p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 620px;
 }
 
 .hero-container {
@@ -216,9 +217,30 @@ footer p {
   background-position-x: left, right;
 }
 
+.middle-booking {
+  background-image: url(./images/patterns/pattern-curve-bottom-right.svg);
+  background-repeat: no-repeat;
+  height: 321px;
+}
+
 .middle-container {
   display: flex;
   flex-direction: column;
+}
+
+.middle-content-booking {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form {
+  width: 540px;
+  height: 545px;
+  background-color: var(--white);
+  align-self: self-end;
+  transform: translateY(-20rem);
+  box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
 }
 
 .middle-family,
@@ -265,6 +287,13 @@ footer p {
   z-index: 1;
   left: 975px;
   top: 180px;
+}
+
+.middle-pattern-booking {
+  position: absolute;
+  z-index: 0;
+  left: 475px;
+  top: 170px;
 }
 
 .highlights {

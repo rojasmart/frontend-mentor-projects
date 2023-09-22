@@ -1,7 +1,8 @@
 import React from "react";
-import HeroBooking from "../components/HeroBooking";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
+import HeroBooking from "../components/HeroBooking";
+import MiddleBooking from "../components/MiddleBooking";
+import Footer from "../components/Footer";
 
 const Booking = () => {
   return (
@@ -9,6 +10,7 @@ const Booking = () => {
       <Header />
       <main>
         <HeroBooking />
+        <MiddleBooking />
       </main>
       <Footer />
     </div>
