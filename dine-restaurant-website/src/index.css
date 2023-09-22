@@ -185,6 +185,14 @@ footer p {
   background-size: cover;
 }
 
+.hero-booking {
+  background-image: url(./images/booking/hero-bg-desktop.jpg);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .hero-container {
   height: 754px;
 }
