@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SpecialEvents = () => {
   return (
@@ -9,7 +10,9 @@ const SpecialEvents = () => {
         others we’ll look after you. We’ll be sure to mark your special date
         with an unforgettable meal.
       </p>
-      <button className="gathering-button">Book a table</button>
+      <Link to="/booking">
+        <button className="gathering-button">Book a table</button>
+      </Link>
     </div>
   );
 };

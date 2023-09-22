@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SocialEvents = () => {
   return (
@@ -9,7 +10,9 @@ const SocialEvents = () => {
         than happy to cater for big parties. We’ll work with you to make your
         event a hit with everyone.
       </p>
-      <button className="gathering-button">Book a table</button>
+      <Link to="/booking">
+        <button className="gathering-button">Book a table</button>
+      </Link>
     </div>
   );
 };

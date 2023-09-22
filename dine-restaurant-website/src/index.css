@@ -89,7 +89,7 @@ button .light {
 }
 
 .gathering-button {
-  border: 2px solid var(--white);
+  border: 2px solid var(--cod-gray);
   background-color: var(--cod-gray);
   color: var(--white);
   padding: 1.2rem 2rem;
@@ -114,11 +114,20 @@ button .light {
   text-transform: uppercase;
   text-decoration: none;
 }
-/* button:hover .dark {
+
+.hero-button:hover,
+.calltoaction-button:hover {
+  background-color: var(--white);
+  color: var(--cod-gray);
+  transition: 0.3s;
 }
 
-button:hover .light {
-} */
+.gathering-button:hover {
+  background-color: var(--white);
+  color: var(--cod-gray);
+  border: 2px solid var(--cod-gray);
+  transition: 0.3s;
+}
 
 h1 {
   font-size: var(--font-heading-xl);
