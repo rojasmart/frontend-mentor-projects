@@ -51,7 +51,9 @@ const BookingForm = () => {
                   <label>
                     <div className="select-booking">
                       <select>
-                        <option value="am">AM</option>
+                        <option id="new-select" value="am">
+                          AM
+                        </option>
                         <option value="pm">PM</option>
                       </select>
                     </div>

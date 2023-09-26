@@ -280,7 +280,7 @@ footer p {
 }
 
 .booking-contacts label {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .booking-contacts input {
@@ -314,7 +314,7 @@ footer p {
 .booking-schedule fieldset {
   display: flex;
   flex-direction: row;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .inputs-booking {
@@ -328,6 +328,42 @@ footer p {
 
 .label-booking {
   flex: 1 0 25%;
+}
+
+.counter-form {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 0 1rem 1rem;
+  margin: 3rem 0 3rem 0;
+  border-bottom: 1px solid var(--ebony-clay);
+}
+
+.counter-form button {
+  all: unset;
+  color: var(--beaver);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.button-submit {
+  width: 444px;
+  height: 64px;
+  flex-shrink: 0;
+  background-color: var(--cod-gray);
+  border: 1px solid var(--cod-gray);
+  color: var(--white);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.063rem;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+}
+
+.button-submit:hover {
+  background-color: var(--white);
+  border: 1px solid var(--cod-gray);
+  transition: 0.2s;
+  color: var(--cod-gray);
 }
 
 .middle-family,
@@ -584,11 +620,6 @@ footer {
     margin: 0 auto;
     padding-top: 570px;
   }
-}
-
-.counter-form {
-  display: flex;
-  justify-content: space-around;
 }
 
 @media (max-width: 587px) {
