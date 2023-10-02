@@ -14,6 +14,7 @@
   --ebony-clay: #242b37;
   --shuttle-gray: #5c6779;
   --hover-gray: #4c4c4c;
+  --red: #b54949;
 
   --lineheight--sm: 1.3rem;
   --lineheight--lg: 1.875rem;
@@ -62,6 +63,7 @@ select {
   background-image: url("./images/icons/icon-arrow.svg");
   background-repeat: no-repeat;
   background-position: right 0.7rem top 12%;
+  cursor: pointer;
 }
 
 ul {
@@ -176,6 +178,12 @@ h4 {
   letter-spacing: 2.5px;
 }
 
+.error-msg {
+  margin-top: 1rem;
+  color: var(--red);
+  font-size: 0.8rem;
+}
+
 .header-container,
 .hero-container,
 .middle-container,
@@ -266,7 +274,7 @@ footer p {
 
 .booking-form {
   width: 540px;
-  height: 545px;
+  min-height: 545px;
   padding: 3rem;
   background-color: var(--white);
   align-self: self-end;

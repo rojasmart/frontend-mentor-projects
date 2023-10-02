@@ -1,8 +1,52 @@
 import React, { useState } from "react";
 import Pattern from "../images/patterns/pattern-lines.svg";
+import validator from "validator";
 
 const BookingForm = () => {
   const [count, setCounter] = useState(0);
+
+  const [emailError, setEmailError] = useState("");
+  //const [nameError, setNameError] = useState("");
+
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+  const [valid, setValid] = useState(false);
+
+  const validateName = (e) => {
+    setValues({ ...values, name: e.target.value });
+    /* setEmailError(true);
+    const name = e.target.value;
+    if (validator.isEmpty(name)) {
+      setNameError("isto está vazio, toca a preencher");
+    } */
+  };
+
+  const validateEmail = (e) => {
+    //setValues({ ...values, email: e.target.value });
+    //setEmailError(true);
+    const email = e.target.value;
+    if (!validator.isEmail(email)) {
+      setEmailError("please enter valid email");
+    } else {
+      setValues({ ...values, email: e.target.value });
+      setEmailError("");
+      submitted(true);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validator.isEmail(values.email)) {
+      setValid(true);
+    }
+    setEmailError("please enter email");
+    setSubmitted(true);
+  };
 
   return (
     <>
@@ -11,13 +55,34 @@ const BookingForm = () => {
           <img src={Pattern} alt="pattern" />
         </div>
         <div className="booking-form">
-          <form>
+          <form id="my-form">
+            {submitted && valid ? (
+              <div className="success-message">
+                Success! Thanks your for registering
+              </div>
+            ) : null}
             <div className="booking-contacts">
               <label htmlFor="">
-                <input type="text" placeholder="name" />
+                <input
+                  type="text"
+                  placeholder="name"
+                  onChange={validateName}
+                  value={values.name}
+                />
+                {submitted && !values.name ? (
+                  <p className="error-msg">please enter name</p>
+                ) : null}
               </label>
               <label htmlFor="">
-                <input type="text" placeholder="email" />
+                <input
+                  type="email"
+                  placeholder="email"
+                  onChange={validateEmail}
+                />
+                {/*  {submitted && !values.email ? (
+                  <p className="error-msg">please enter email</p>
+                ) : null} */}
+                {emailError ? <p className="error-msg">{emailError}</p> : null}
               </label>
             </div>
             <div className="booking-schedule">
@@ -67,7 +132,15 @@ const BookingForm = () => {
             <div className="counter-number">{count} people</div>
             <button onClick={() => setCounter(count + 1)}>+</button>
           </div>
-          <button className="button-submit">make a reservation</button>
+          <button
+            className="button-submit"
+            form="my-form"
+            content="Submit"
+            value="Submit"
+            onClick={handleSubmit}
+          >
+            make a reservation
+          </button>
         </div>
         ;
       </div>
