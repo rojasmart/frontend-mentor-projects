@@ -5,14 +5,20 @@ import validator from "validator";
 const BookingForm = () => {
   const [count, setCounter] = useState(0);
   const [emailError, setEmailError] = useState("");
+  const [dayError, setDayError] = useState("");
 
   const [values, setValues] = useState({
     name: "",
     email: "",
+    day: "",
+    month: "",
+    year: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
+
+  const date = new Date();
 
   const validateName = (e) => {
     setValues({ ...values, name: e.target.value });
@@ -30,6 +36,25 @@ const BookingForm = () => {
     setValues({ ...values, email: e.target.value });
   };
 
+  const validateDay = (e) => {
+    const daySliced = e.target.value.slice(0, 2);
+    if (daySliced < date.getDate()) {
+      setDayError("please enter valid day");
+    } else {
+      setValues({ ...values, day: e.target.value });
+      setDayError("");
+    }
+    setValues({ ...values, day: e.target.value });
+  };
+
+  const validateMonth = (e) => {
+    setValues({ ...values, month: e.target.value });
+  };
+
+  const validateYear = (e) => {
+    setValues({ ...values, year: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -38,6 +63,7 @@ const BookingForm = () => {
     }
 
     setSubmitted(true);
+    console.log("values", values);
   };
 
   return (
@@ -84,16 +110,36 @@ const BookingForm = () => {
               <fieldset>
                 <div className="label-booking">
                   <legend>Pick a date</legend>
+                  {submitted && !values.date ? (
+                    <p className="error-msg">This field is required</p>
+                  ) : dayError ? (
+                    <p className="error-msg">{dayError}</p>
+                  ) : null}
                 </div>
                 <div className="inputs-booking">
                   <label>
-                    <input type="number" placeholder="DD" />
+                    <input
+                      type="number"
+                      placeholder="DD"
+                      onChange={validateDay}
+                      value={values.day.slice(0, 2)}
+                    />
                   </label>
                   <label>
-                    <input type="number" placeholder="MM" />
+                    <input
+                      type="number"
+                      placeholder="MM"
+                      onChange={validateMonth}
+                      value={values.month.slice(0, 2)}
+                    />
                   </label>
                   <label>
-                    <input type="number" placeholder="YYYY" />
+                    <input
+                      type="number"
+                      placeholder="YYYY"
+                      onChange={validateYear}
+                      value={values.year}
+                    />
                   </label>
                 </div>
               </fieldset>
