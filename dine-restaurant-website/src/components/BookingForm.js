@@ -6,6 +6,7 @@ const BookingForm = () => {
   const [count, setCounter] = useState(0);
   const [emailError, setEmailError] = useState("");
   const [dayError, setDayError] = useState("");
+  const [monthError, setMonthError] = useState("");
 
   const [values, setValues] = useState({
     name: "",
@@ -19,6 +20,18 @@ const BookingForm = () => {
   const [valid, setValid] = useState(false);
 
   const date = new Date();
+  // Format the date to YYYY-MM-DD
+  const formattedDate = date
+    .toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .split("/")
+    .reverse()
+    .join("-");
+
+  console.log(validator.isDate(formattedDate, new Date()));
 
   const validateName = (e) => {
     setValues({ ...values, name: e.target.value });
@@ -37,7 +50,7 @@ const BookingForm = () => {
   };
 
   const validateDay = (e) => {
-    const daySliced = e.target.value.slice(0, 2);
+    const daySliced = e.target.value;
     if (daySliced < date.getDate()) {
       setDayError("please enter valid day");
     } else {
@@ -48,6 +61,15 @@ const BookingForm = () => {
   };
 
   const validateMonth = (e) => {
+    const monthSliced = e.target.value;
+
+    if (monthSliced < date.getMonth()) {
+      setMonthError("please enter valid month");
+    } else {
+      setValues({ ...values, month: e.target.value });
+      setMonthError("");
+    }
+
     setValues({ ...values, month: e.target.value });
   };
 
@@ -110,21 +132,15 @@ const BookingForm = () => {
               <fieldset>
                 <div className="label-booking">
                   <legend>Pick a date</legend>
-                  {submitted && !values.date ? (
+                  {submitted && !values.date && !values.month ? (
                     <p className="error-msg">This field is required</p>
+                  ) : monthError ? (
+                    <p className="error-msg">{monthError}</p>
                   ) : dayError ? (
                     <p className="error-msg">{dayError}</p>
                   ) : null}
                 </div>
                 <div className="inputs-booking">
-                  <label>
-                    <input
-                      type="number"
-                      placeholder="DD"
-                      onChange={validateDay}
-                      value={values.day.slice(0, 2)}
-                    />
-                  </label>
                   <label>
                     <input
                       type="number"
@@ -136,9 +152,17 @@ const BookingForm = () => {
                   <label>
                     <input
                       type="number"
+                      placeholder="DD"
+                      onChange={validateDay}
+                      value={values.day.slice(0, 2)}
+                    />
+                  </label>
+                  <label>
+                    <input
+                      type="number"
                       placeholder="YYYY"
                       onChange={validateYear}
-                      value={values.year}
+                      value={values.year.slice(0, 4)}
                     />
                   </label>
                 </div>
