@@ -31,8 +31,21 @@ const BookingForm = () => {
     .reverse()
     .join("-");
 
+  const objectDate = {
+    year: "2000",
+    month: "09",
+    day: values.day.toString(),
+  };
+
   console.log(validator.isDate(formattedDate, new Date()));
 
+  const parsedObject = Object.values(objectDate)
+    .toString()
+    .split(",")
+    .join("-");
+
+  console.log(formattedDate);
+  console.log(parsedObject);
   const validateName = (e) => {
     setValues({ ...values, name: e.target.value });
   };
