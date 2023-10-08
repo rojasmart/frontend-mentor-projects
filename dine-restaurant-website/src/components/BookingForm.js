@@ -4,10 +4,13 @@ import validator from "validator";
 
 const BookingForm = () => {
   const [count, setCounter] = useState(1);
+  const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [dayError, setDayError] = useState("");
   const [monthError, setMonthError] = useState("");
   const [yearError, setYearError] = useState("");
+  const [hourError, setHourError] = useState("");
+  const [minuteError, setMinuteError] = useState("");
   const [validDate, setValidDate] = useState(false);
 
   const [values, setValues] = useState({
@@ -24,6 +27,7 @@ const BookingForm = () => {
   const [valid, setValid] = useState(false);
 
   const date = new Date();
+
   /*  // Format the date to YYYY-MM-DD
   const formattedDate = date
     .toLocaleDateString("en-GB", {
@@ -47,6 +51,13 @@ const BookingForm = () => {
     .join("-");
 
   const validateName = (e) => {
+    const name = e.target.value;
+    if (name.length < 1) {
+      setNameError("This field is required");
+    } else {
+      setValues({ ...values, name: e.target.value });
+      setNameError("");
+    }
     setValues({ ...values, name: e.target.value });
   };
 
@@ -94,6 +105,36 @@ const BookingForm = () => {
     setValues({ ...values, year: e.target.value });
   };
 
+  const validateHour = (e) => {
+    const low = 0;
+    const highHours = 12;
+
+    const hour = parseInt(e.target.value);
+
+    if (hour < low || hour > highHours) {
+      setHourError("please enter valid hour");
+    } else {
+      setValues({ ...values, hour: e.target.value });
+      setHourError("");
+    }
+    setValues({ ...values, hour: e.target.value });
+  };
+
+  const validateMinute = (e) => {
+    const low = 0;
+    const highMinutes = 60;
+
+    const minute = parseInt(e.target.value);
+
+    if (minute < low || minute > highMinutes) {
+      setMinuteError("please enter valid minutes");
+    } else {
+      setValues({ ...values, min: e.target.value });
+      setMinuteError("");
+    }
+    setValues({ ...values, min: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -124,20 +165,22 @@ const BookingForm = () => {
               <label htmlFor="">
                 <input
                   type="text"
-                  placeholder="name"
+                  placeholder="Name"
                   onChange={validateName}
                   value={values.name}
+                  className={nameError && "error"}
                 />
-                {submitted && !values.name ? (
-                  <p className="error-msg">This field is required</p>
+                {(submitted && nameError) || nameError ? (
+                  <p className="error-msg">{nameError}</p>
                 ) : null}
               </label>
               <label htmlFor="">
                 <input
                   type="email"
-                  placeholder="email"
+                  placeholder="Email"
                   onChange={validateEmail}
                   value={values.email}
+                  className={emailError && "error"}
                 />
                 {submitted && !values.email ? (
                   <p className="error-msg">This field is required</p>
@@ -191,12 +234,20 @@ const BookingForm = () => {
               <fieldset>
                 <div className="label-booking">
                   <legend>Pick a time</legend>
+                  {submitted && !values.hour ? (
+                    <p className="error-msg">This field is required</p>
+                  ) : hourError ? (
+                    <p className="error-msg">{hourError}</p>
+                  ) : minuteError ? (
+                    <p className="error-msg">{minuteError}</p>
+                  ) : null}
                 </div>
                 <div className="inputs-booking">
                   <label>
                     <input
                       type="number"
                       placeholder="09"
+                      onChange={validateHour}
                       value={values.hour.slice(0, 2)}
                     />
                   </label>
@@ -204,6 +255,7 @@ const BookingForm = () => {
                     <input
                       type="number"
                       placeholder="00"
+                      onChange={validateMinute}
                       value={values.min.slice(0, 2)}
                     />
                   </label>

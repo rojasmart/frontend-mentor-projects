@@ -299,6 +299,14 @@ footer p {
   border-color: var(--ebony-clay);
 }
 
+.booking-contacts .error {
+  border-color: var(--red);
+}
+
+.booking-contacts .error::placeholder {
+  color: var(--red);
+}
+
 .booking-form fieldset {
   border: 0;
 }
