@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Pattern from "../images/patterns/pattern-lines.svg";
 import validator from "validator";
+import { FcApproval } from "react-icons/fc";
 
 const BookingForm = () => {
   const [count, setCounter] = useState(1);
@@ -11,8 +12,6 @@ const BookingForm = () => {
   const [yearError, setYearError] = useState("");
   const [hourError, setHourError] = useState("");
   const [minuteError, setMinuteError] = useState("");
-
-  const [validDate, setValidDate] = useState(false);
 
   const [values, setValues] = useState({
     name: "",
@@ -28,6 +27,8 @@ const BookingForm = () => {
   const [valid, setValid] = useState(false);
 
   const date = new Date();
+
+  console.log("valid", valid);
 
   /*  // Format the date to YYYY-MM-DD
   const formattedDate = date
@@ -138,13 +139,16 @@ const BookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("values hour", values.hour);
     if (
       validator.isEmail(values.email) &&
-      validator.isDate(parsedObject, new Date())
+      validator.isDate(parsedObject, new Date()) &&
+      values.hour &&
+      values.min &&
+      !hourError &&
+      !minuteError
     ) {
       setValid(true);
-    } else {
     }
     setSubmitted(true);
   };
@@ -155,196 +159,223 @@ const BookingForm = () => {
         <div className="middle-pattern-booking">
           <img src={Pattern} alt="pattern" />
         </div>
-        <div className="booking-form">
-          <form id="my-form">
-            {submitted && valid ? (
-              <div className="success-message">
-                Success! Thanks your for registering
+        {!valid ? (
+          <div className="booking-form">
+            <form id="my-form">
+              {submitted && valid ? (
+                <div className="success-message">
+                  Success! Thanks your for registering
+                </div>
+              ) : null}
+              <div className="booking-contacts">
+                <label htmlFor="">
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    onChange={validateName}
+                    value={values.name}
+                    className={
+                      nameError || (submitted && !values.name) ? "error" : null
+                    }
+                  />
+                  {submitted && !values.name ? (
+                    <p className="error-msg">This field is required</p>
+                  ) : nameError ? (
+                    <p className="error-msg">{nameError}</p>
+                  ) : null}
+                </label>
+                <label htmlFor="">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={validateEmail}
+                    value={values.email}
+                    className={
+                      emailError || (submitted && !values.email)
+                        ? "error"
+                        : null
+                    }
+                  />
+                  {submitted && !values.email ? (
+                    <p className="error-msg">This field is required</p>
+                  ) : emailError ? (
+                    <p className="error-msg">{emailError}</p>
+                  ) : null}
+                  {}
+                </label>
               </div>
-            ) : null}
-            <div className="booking-contacts">
-              <label htmlFor="">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  onChange={validateName}
-                  value={values.name}
-                  className={
-                    nameError || (submitted && !values.name) ? "error" : null
-                  }
-                />
-                {submitted && !values.name ? (
-                  <p className="error-msg">This field is required</p>
-                ) : nameError ? (
-                  <p className="error-msg">{nameError}</p>
-                ) : null}
-              </label>
-              <label htmlFor="">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  onChange={validateEmail}
-                  value={values.email}
-                  className={
-                    emailError || (submitted && !values.email) ? "error" : null
-                  }
-                />
-                {submitted && !values.email ? (
-                  <p className="error-msg">This field is required</p>
-                ) : emailError ? (
-                  <p className="error-msg">{emailError}</p>
-                ) : null}
-                {}
-              </label>
+              <div className="booking-schedule">
+                <fieldset>
+                  <div className="label-booking">
+                    <legend
+                      className={
+                        monthError ||
+                        dayError ||
+                        yearError ||
+                        (submitted && !values.date && !values.month)
+                          ? "error"
+                          : null
+                      }
+                    >
+                      Pick a date
+                    </legend>
+                    {submitted && !values.date && !values.month ? (
+                      <p className="error-msg">This field is required</p>
+                    ) : monthError ? (
+                      <p className="error-msg">{monthError}</p>
+                    ) : dayError ? (
+                      <p className="error-msg">{dayError}</p>
+                    ) : yearError ? (
+                      <p className="error-msg">{yearError}</p>
+                    ) : null}
+                  </div>
+                  <div className="inputs-booking">
+                    <label>
+                      <input
+                        type="number"
+                        placeholder="MM"
+                        onChange={validateMonth}
+                        value={values.month.slice(0, 2)}
+                        className={
+                          monthError || (submitted && !values.month)
+                            ? "error"
+                            : null
+                        }
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="number"
+                        placeholder="DD"
+                        onChange={validateDay}
+                        value={values.day.slice(0, 2)}
+                        className={
+                          dayError || (submitted && !values.day)
+                            ? "error"
+                            : null
+                        }
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="number"
+                        placeholder="YYYY"
+                        onChange={validateYear}
+                        value={values.year.slice(0, 4)}
+                        className={
+                          yearError || (submitted && !values.year)
+                            ? "error"
+                            : null
+                        }
+                      />
+                    </label>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <div className="label-booking">
+                    <legend
+                      className={
+                        hourError ||
+                        minuteError ||
+                        (submitted && !values.hour && !values.minute)
+                          ? "error"
+                          : null
+                      }
+                    >
+                      Pick a time
+                    </legend>
+                    {submitted && !values.hour ? (
+                      <p className="error-msg">This field is required</p>
+                    ) : hourError ? (
+                      <p className="error-msg">{hourError}</p>
+                    ) : minuteError ? (
+                      <p className="error-msg">{minuteError}</p>
+                    ) : null}
+                  </div>
+                  <div className="inputs-booking">
+                    <label>
+                      <input
+                        type="number"
+                        placeholder="09"
+                        onChange={validateHour}
+                        value={values.hour.slice(0, 2)}
+                        className={
+                          hourError || (submitted && !values.hour)
+                            ? "error"
+                            : null
+                        }
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="number"
+                        placeholder="00"
+                        onChange={validateMinute}
+                        value={values.min.slice(0, 2)}
+                        className={
+                          minuteError || (submitted && !values.min)
+                            ? "error"
+                            : null
+                        }
+                      />
+                    </label>
+                    <label>
+                      <div className="select-booking">
+                        <select>
+                          <option id="new-select" value="am">
+                            AM
+                          </option>
+                          <option value="pm">PM</option>
+                        </select>
+                      </div>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </form>
+            <div className="counter-form">
+              <button
+                disabled={count <= 1 ? true : false}
+                onClick={() => setCounter(count - 1)}
+              >
+                -
+              </button>
+              <div className="counter-number">{count} people</div>
+              <button onClick={() => setCounter(count + 1)}>+</button>
             </div>
-            <div className="booking-schedule">
-              <fieldset>
-                <div className="label-booking">
-                  <legend
-                    className={
-                      monthError ||
-                      dayError ||
-                      yearError ||
-                      (submitted && !values.date && !values.month)
-                        ? "error"
-                        : null
-                    }
-                  >
-                    Pick a date
-                  </legend>
-                  {submitted && !values.date && !values.month ? (
-                    <p className="error-msg">This field is required</p>
-                  ) : monthError ? (
-                    <p className="error-msg">{monthError}</p>
-                  ) : dayError ? (
-                    <p className="error-msg">{dayError}</p>
-                  ) : yearError ? (
-                    <p className="error-msg">{yearError}</p>
-                  ) : null}
-                </div>
-                <div className="inputs-booking">
-                  <label>
-                    <input
-                      type="number"
-                      placeholder="MM"
-                      onChange={validateMonth}
-                      value={values.month.slice(0, 2)}
-                      className={
-                        monthError || (submitted && !values.month)
-                          ? "error"
-                          : null
-                      }
-                    />
-                  </label>
-                  <label>
-                    <input
-                      type="number"
-                      placeholder="DD"
-                      onChange={validateDay}
-                      value={values.day.slice(0, 2)}
-                      className={
-                        dayError || (submitted && !values.day) ? "error" : null
-                      }
-                    />
-                  </label>
-                  <label>
-                    <input
-                      type="number"
-                      placeholder="YYYY"
-                      onChange={validateYear}
-                      value={values.year.slice(0, 4)}
-                      className={
-                        yearError || (submitted && !values.year)
-                          ? "error"
-                          : null
-                      }
-                    />
-                  </label>
-                </div>
-              </fieldset>
-              <fieldset>
-                <div className="label-booking">
-                  <legend
-                    className={
-                      hourError ||
-                      minuteError ||
-                      (submitted && !values.hour && !values.minute)
-                        ? "error"
-                        : null
-                    }
-                  >
-                    Pick a time
-                  </legend>
-                  {submitted && !values.hour ? (
-                    <p className="error-msg">This field is required</p>
-                  ) : hourError ? (
-                    <p className="error-msg">{hourError}</p>
-                  ) : minuteError ? (
-                    <p className="error-msg">{minuteError}</p>
-                  ) : null}
-                </div>
-                <div className="inputs-booking">
-                  <label>
-                    <input
-                      type="number"
-                      placeholder="09"
-                      onChange={validateHour}
-                      value={values.hour.slice(0, 2)}
-                      className={
-                        hourError || (submitted && !values.hour)
-                          ? "error"
-                          : null
-                      }
-                    />
-                  </label>
-                  <label>
-                    <input
-                      type="number"
-                      placeholder="00"
-                      onChange={validateMinute}
-                      value={values.min.slice(0, 2)}
-                      className={
-                        minuteError || (submitted && !values.minute)
-                          ? "error"
-                          : null
-                      }
-                    />
-                  </label>
-                  <label>
-                    <div className="select-booking">
-                      <select>
-                        <option id="new-select" value="am">
-                          AM
-                        </option>
-                        <option value="pm">PM</option>
-                      </select>
-                    </div>
-                  </label>
-                </div>
-              </fieldset>
-            </div>
-          </form>
-          <div className="counter-form">
             <button
-              disabled={count <= 1 ? true : false}
-              onClick={() => setCounter(count - 1)}
+              className="button-submit"
+              form="my-form"
+              content="Submit"
+              value="Submit"
+              onClick={handleSubmit}
             >
-              -
+              make a reservation
             </button>
-            <div className="counter-number">{count} people</div>
-            <button onClick={() => setCounter(count + 1)}>+</button>
           </div>
-          <button
-            className="button-submit"
-            form="my-form"
-            content="Submit"
-            value="Submit"
-            onClick={handleSubmit}
-          >
-            make a reservation
-          </button>
-        </div>
-        ;
+        ) : (
+          <div className="booking-form success">
+            <div class="success-header">
+              <h2>
+                Thank you!
+                <FcApproval />
+              </h2>
+              <p>We have successfully received your reservation.</p>
+            </div>
+            <div className="success-content">
+              <p>
+                Your reservation at Dine is in the name of{" "}
+                <strong>{values.name}</strong>
+              </p>
+              <p>
+                A table for {count} persons scheduled for {values.day}/
+                {values.month} at {values.hour}:{values.min}.
+              </p>
+            </div>
+            <p>Enjoy your meal.</p>
+            <h5>You can call +00 44 123 4567 for any question</h5>
+          </div>
+        )}
       </div>
     </>
   );

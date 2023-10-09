@@ -282,6 +282,25 @@ footer p {
   box-shadow: 0px 75px 100px -50px rgba(56, 66, 85, 0.5);
 }
 
+.booking-form.success {
+  line-height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.booking-form.success h5 {
+  text-decoration: underline;
+}
+
+.success-content {
+  border: 1px solid gainsboro;
+  background-color: #f1f1f1;
+  padding: 1rem;
+  margin: 3rem 0 3rem 0;
+  font-size: 1.1rem;
+}
+
 .booking-contacts {
   display: flex;
   flex-direction: column;
