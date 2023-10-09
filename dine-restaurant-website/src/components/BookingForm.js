@@ -11,6 +11,7 @@ const BookingForm = () => {
   const [yearError, setYearError] = useState("");
   const [hourError, setHourError] = useState("");
   const [minuteError, setMinuteError] = useState("");
+
   const [validDate, setValidDate] = useState(false);
 
   const [values, setValues] = useState({
@@ -168,9 +169,13 @@ const BookingForm = () => {
                   placeholder="Name"
                   onChange={validateName}
                   value={values.name}
-                  className={nameError && "error"}
+                  className={
+                    nameError || (submitted && !values.name) ? "error" : null
+                  }
                 />
-                {(submitted && nameError) || nameError ? (
+                {submitted && !values.name ? (
+                  <p className="error-msg">This field is required</p>
+                ) : nameError ? (
                   <p className="error-msg">{nameError}</p>
                 ) : null}
               </label>
@@ -180,7 +185,9 @@ const BookingForm = () => {
                   placeholder="Email"
                   onChange={validateEmail}
                   value={values.email}
-                  className={emailError && "error"}
+                  className={
+                    emailError || (submitted && !values.email) ? "error" : null
+                  }
                 />
                 {submitted && !values.email ? (
                   <p className="error-msg">This field is required</p>
@@ -193,7 +200,18 @@ const BookingForm = () => {
             <div className="booking-schedule">
               <fieldset>
                 <div className="label-booking">
-                  <legend>Pick a date</legend>
+                  <legend
+                    className={
+                      monthError ||
+                      dayError ||
+                      yearError ||
+                      (submitted && !values.date && !values.month)
+                        ? "error"
+                        : null
+                    }
+                  >
+                    Pick a date
+                  </legend>
                   {submitted && !values.date && !values.month ? (
                     <p className="error-msg">This field is required</p>
                   ) : monthError ? (
@@ -211,6 +229,11 @@ const BookingForm = () => {
                       placeholder="MM"
                       onChange={validateMonth}
                       value={values.month.slice(0, 2)}
+                      className={
+                        monthError || (submitted && !values.month)
+                          ? "error"
+                          : null
+                      }
                     />
                   </label>
                   <label>
@@ -219,6 +242,9 @@ const BookingForm = () => {
                       placeholder="DD"
                       onChange={validateDay}
                       value={values.day.slice(0, 2)}
+                      className={
+                        dayError || (submitted && !values.day) ? "error" : null
+                      }
                     />
                   </label>
                   <label>
@@ -227,13 +253,28 @@ const BookingForm = () => {
                       placeholder="YYYY"
                       onChange={validateYear}
                       value={values.year.slice(0, 4)}
+                      className={
+                        yearError || (submitted && !values.year)
+                          ? "error"
+                          : null
+                      }
                     />
                   </label>
                 </div>
               </fieldset>
               <fieldset>
                 <div className="label-booking">
-                  <legend>Pick a time</legend>
+                  <legend
+                    className={
+                      hourError ||
+                      minuteError ||
+                      (submitted && !values.hour && !values.minute)
+                        ? "error"
+                        : null
+                    }
+                  >
+                    Pick a time
+                  </legend>
                   {submitted && !values.hour ? (
                     <p className="error-msg">This field is required</p>
                   ) : hourError ? (
@@ -249,6 +290,11 @@ const BookingForm = () => {
                       placeholder="09"
                       onChange={validateHour}
                       value={values.hour.slice(0, 2)}
+                      className={
+                        hourError || (submitted && !values.hour)
+                          ? "error"
+                          : null
+                      }
                     />
                   </label>
                   <label>
@@ -257,6 +303,11 @@ const BookingForm = () => {
                       placeholder="00"
                       onChange={validateMinute}
                       value={values.min.slice(0, 2)}
+                      className={
+                        minuteError || (submitted && !values.minute)
+                          ? "error"
+                          : null
+                      }
                     />
                   </label>
                   <label>

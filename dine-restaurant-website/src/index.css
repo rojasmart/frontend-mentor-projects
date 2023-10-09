@@ -299,16 +299,23 @@ footer p {
   border-color: var(--ebony-clay);
 }
 
-.booking-contacts .error {
+.booking-contacts .error,
+.booking-schedule .error {
   border-color: var(--red);
+  color: var(--red);
 }
 
-.booking-contacts .error::placeholder {
+.booking-contacts .error::placeholder,
+.booking-schedule .error::placeholder {
   color: var(--red);
 }
 
 .booking-form fieldset {
   border: 0;
+}
+
+legend .error {
+  color: var(--red);
 }
 
 .booking-schedule input {
