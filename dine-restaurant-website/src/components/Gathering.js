@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import FamilyGathering from "./AllTabs/FamilyGathering";
 import SpecialEvents from "./AllTabs/SpecialEvents";
 import SocialEvents from "./AllTabs/SocialEvents";
-import FamilyGatheringImg from "../images/homepage/family-gathering-desktop.jpg";
-import SpecialEventsImg from "../images/homepage/social-events-desktop.jpg";
-import SocialEventsImg from "../images/homepage/special-events-desktop.jpg";
+import FamilyGatheringImgDesktop from "../images/homepage/family-gathering-desktop.jpg";
+import FamilyGatheringImgTablet from "../images/homepage/family-gathering-tablet.jpg";
+import FamilyGatheringImgMobile from "../images/homepage/family-gathering-mobile.jpg";
+import SpecialEventsImgDesktop from "../images/homepage/social-events-desktop.jpg";
+import SpecialEventsImgTablet from "../images/homepage/social-events-tablet.jpg";
+import SpecialEventsImgMobile from "../images/homepage/social-events-mobile.jpg";
+import SocialEventsImgDesktop from "../images/homepage/special-events-desktop.jpg";
+import SocialEventsImgTablet from "../images/homepage/special-events-tablet.jpg";
+import SocialEventsImgMobile from "../images/homepage/special-events-mobile.jpg";
 import Pattern from "../images/patterns/pattern-lines.svg";
 
 const Gathering = () => {
@@ -32,13 +38,45 @@ const Gathering = () => {
             </div>
             <div className="gathering-slider-container">
               {activeTab === "FamilyGathering" && (
-                <img src={FamilyGatheringImg} alt="family-gathering" />
+                <picture>
+                  <source
+                    srcset={FamilyGatheringImgTablet}
+                    media="(max-width: 768px)"
+                  />
+                  <source
+                    srcset={FamilyGatheringImgMobile}
+                    media="(max-width: 375px)"
+                  />
+                  <img src={FamilyGatheringImgDesktop} alt="family_gathering" />
+                </picture>
               )}
               {activeTab === "SpecialEvents" && (
-                <img src={SpecialEventsImg} alt="family-gathering" />
+                <picture>
+                  <source
+                    srcset={SpecialEventsImgTablet}
+                    media="(max-width: 768px)"
+                  />
+                  <source
+                    srcset={SpecialEventsImgMobile}
+                    media="(max-width: 375px)"
+                  />
+
+                  <img src={SpecialEventsImgDesktop} alt="special_event" />
+                </picture>
               )}
               {activeTab === "SocialEvents" && (
-                <img src={SocialEventsImg} alt="family-gathering" />
+                <picture>
+                  <source
+                    srcset={SocialEventsImgTablet}
+                    media="(max-width: 768px)"
+                  />
+                  <source
+                    srcset={SocialEventsImgMobile}
+                    media="(max-width: 375px)"
+                  />
+
+                  <img src={SocialEventsImgDesktop} alt="social_event" />
+                </picture>
               )}
             </div>
           </div>

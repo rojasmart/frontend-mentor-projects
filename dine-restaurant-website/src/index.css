@@ -289,6 +289,7 @@ footer p {
   justify-content: center;
   gap: 1rem;
 }
+
 .booking-form.success h5 {
   text-decoration: underline;
 }
@@ -662,6 +663,10 @@ footer {
     margin: 0 auto;
     padding-top: 570px;
   }
+
+  .booking-form {
+    align-self: center;
+  }
 }
 
 @media (max-width: 587px) {
@@ -687,5 +692,26 @@ footer {
   .hero-text {
     width: 100%;
     padding-top: 340px;
+  }
+
+  .middle-pattern {
+    left: 0;
+  }
+
+  .middle-family,
+  .middle-locally,
+  .highlights-container,
+  .gathering-container,
+  .footer-container,
+  .calltoaction-container {
+    flex-direction: column;
+  }
+
+  picture img {
+    width: 100%;
+  }
+
+  .calltoaction-container {
+    flex-direction: column;
   }
 }

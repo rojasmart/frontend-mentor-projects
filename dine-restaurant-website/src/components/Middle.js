@@ -1,6 +1,10 @@
 import React from "react";
-import MiddleImageLeft from "../images/homepage/enjoyable-place-desktop.jpg";
-import MiddleImageRight from "../images/homepage/locally-sourced-desktop.jpg";
+import MiddleImageLeftDesktop from "../images/homepage/enjoyable-place-desktop.jpg";
+import MiddleImageLeftTablet from "../images/homepage/enjoyable-place-tablet.jpg";
+import MiddleImageLeftMobile from "../images/homepage/enjoyable-place-mobile.jpg";
+import MiddleImageRightDesktop from "../images/homepage/locally-sourced-desktop.jpg";
+import MiddleImageRightTablet from "../images/homepage/locally-sourced-tablet.jpg";
+import MiddleImageRightMobile from "../images/homepage/locally-sourced-mobile.jpg";
 import Divider from "../images/patterns/pattern-divide.svg";
 import Pattern from "../images/patterns/pattern-lines.svg";
 
@@ -10,7 +14,17 @@ const Middle = () => {
       <div className="middle-container">
         <div className="middle-family">
           <div className="middle-image first">
-            <img src={MiddleImageLeft} alt="image_trees" />
+            <picture>
+              <source
+                srcset={MiddleImageLeftTablet}
+                media="(max-width: 768px)"
+              />
+              <source
+                srcset={MiddleImageLeftMobile}
+                media="(max-width: 375px)"
+              />
+              <img src={MiddleImageLeftDesktop} alt="image_trees" />
+            </picture>
           </div>
           <div className="middle-content">
             <img src={Divider} alt="image_divider" />
@@ -27,7 +41,17 @@ const Middle = () => {
             <img src={Pattern} alt="pattern" />
           </div>
           <div className="middle-image second">
-            <img src={MiddleImageRight} alt="image_trees" />
+            <picture>
+              <source
+                srcset={MiddleImageRightTablet}
+                media="(max-width: 768px)"
+              />
+              <source
+                srcset={MiddleImageRightMobile}
+                media="(max-width: 375px)"
+              />
+              <img src={MiddleImageRightDesktop} alt="image_trees" />
+            </picture>
           </div>
           <div className="middle-content">
             <img src={Divider} alt="image_divider" />
