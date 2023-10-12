@@ -266,6 +266,14 @@ footer p {
   flex-direction: column;
 }
 
+.middle-content.right {
+  margin-top: 10rem;
+}
+
+.middle-content.left {
+  margin-top: 20rem;
+}
+
 .middle-content-booking {
   position: relative;
   display: flex;
@@ -423,10 +431,6 @@ legend .error {
   flex-direction: row-reverse;
   position: relative;
   margin-bottom: 9rem;
-}
-
-.middle-content {
-  text-align: center;
 }
 
 .middle-body-text {
@@ -650,18 +654,19 @@ footer {
 
   .hero {
     background-image: url(./images/homepage/hero-bg-tablet.jpg);
-    background-position: initial;
+    background-position: center;
   }
 
   .hero-container {
-    height: 950px;
+    height: 1046px;
   }
 
   .hero-text {
     width: 500px;
     text-align: center;
     margin: 0 auto;
-    padding-top: 570px;
+    padding-top: 510px;
+    padding-bottom: 9rem;
   }
 
   .booking-form {
@@ -671,6 +676,18 @@ footer {
   .middle {
     background-position-y: 12.2rem, bottom;
     background-position-x: -26rem, 26rem;
+  }
+
+  .middle-content.right {
+    margin-top: 0;
+  }
+
+  .middle-content.left {
+    margin-top: 0;
+  }
+
+  .middle-content {
+    text-align: center;
   }
 
   .middle-family,
@@ -898,10 +915,15 @@ footer {
     text-align: center;
     margin-top: 0;
     margin-bottom: 2rem;
+    flex-direction: column;
   }
 
   .gathering-text-container {
     text-align: center;
+  }
+
+  .gathering-underline {
+    left: 6.4rem;
   }
 
   .bottom-pattern {

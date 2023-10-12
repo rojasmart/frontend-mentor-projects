@@ -30,7 +30,7 @@ const Middle = () => {
               <img srcSet={MiddleImageLeftMobile} alt="image_trees" />
             </picture>
           </div>
-          <div className="middle-content">
+          <div className="middle-content right">
             <img src={Divider} alt="image_divider" />
             <h2 className="middle-title">Enjoyable place for all the family</h2>
             <p className="middle-body-text">
@@ -61,7 +61,7 @@ const Middle = () => {
               <img src={MiddleImageRightMobile} alt="image_trees" />
             </picture>
           </div>
-          <div className="middle-content">
+          <div className="middle-content left">
             <img src={Divider} alt="image_divider" />
             <h2 className="middle-title">The most locally sourced food</h2>
             <p className="middle-body-text">
