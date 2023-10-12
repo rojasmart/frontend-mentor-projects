@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FamilyGathering from "./AllTabs/FamilyGathering";
 import SpecialEvents from "./AllTabs/SpecialEvents";
 import SocialEvents from "./AllTabs/SocialEvents";
@@ -15,6 +15,15 @@ import Pattern from "../images/patterns/pattern-lines.svg";
 
 const Gathering = () => {
   const [activeTab, setActiveTab] = useState("FamilyGathering");
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakPoint = 1200;
+
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   const FamilyGatheringClick = () => {
     setActiveTab("FamilyGathering");
@@ -40,94 +49,151 @@ const Gathering = () => {
               {activeTab === "FamilyGathering" && (
                 <picture>
                   <source
-                    srcset={FamilyGatheringImgTablet}
-                    media="(max-width: 768px)"
+                    srcSet={FamilyGatheringImgDesktop}
+                    media="(min-width: 1200px)"
                   />
                   <source
-                    srcset={FamilyGatheringImgMobile}
-                    media="(max-width: 375px)"
+                    srcSet={FamilyGatheringImgTablet}
+                    media="(min-width: 768px)"
                   />
-                  <img src={FamilyGatheringImgDesktop} alt="family_gathering" />
+                  <source
+                    srcSet={FamilyGatheringImgMobile}
+                    media="(min-width: 475px)"
+                  />
+                  <img src={FamilyGatheringImgMobile} alt="family_gathering" />
                 </picture>
               )}
               {activeTab === "SpecialEvents" && (
                 <picture>
                   <source
-                    srcset={SpecialEventsImgTablet}
-                    media="(max-width: 768px)"
+                    srcSet={SpecialEventsImgDesktop}
+                    media="(min-width: 1200px)"
                   />
                   <source
-                    srcset={SpecialEventsImgMobile}
-                    media="(max-width: 375px)"
+                    srcSet={SpecialEventsImgTablet}
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcSet={SpecialEventsImgMobile}
+                    media="(min-width: 475px)"
                   />
 
-                  <img src={SpecialEventsImgDesktop} alt="special_event" />
+                  <img src={SpecialEventsImgMobile} alt="special_event" />
                 </picture>
               )}
               {activeTab === "SocialEvents" && (
                 <picture>
                   <source
-                    srcset={SocialEventsImgTablet}
-                    media="(max-width: 768px)"
+                    srcSet={SocialEventsImgDesktop}
+                    media="(min-width: 2300px)"
                   />
                   <source
-                    srcset={SocialEventsImgMobile}
-                    media="(max-width: 375px)"
+                    srcSet={SocialEventsImgTablet}
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcSet={SocialEventsImgMobile}
+                    media="(min-width: 475px)"
                   />
 
-                  <img src={SocialEventsImgDesktop} alt="social_event" />
+                  <img src={SocialEventsImgMobile} alt="social_event" />
                 </picture>
               )}
             </div>
           </div>
         </div>
         <div className="gathering-content">
+          {width < breakPoint && (
+            <ul className="gathering-titles">
+              <li
+                className={activeTab === "FamilyGathering" ? "active" : ""}
+                onClick={FamilyGatheringClick}
+              >
+                Family Gathering
+                <div
+                  className={
+                    activeTab === "FamilyGathering"
+                      ? "gathering-underline active"
+                      : "gathering-underline"
+                  }
+                ></div>
+              </li>
+              <li
+                className={activeTab === "SpecialEvents" ? "active" : ""}
+                onClick={SpecialEventsClick}
+              >
+                Special Events
+                <div
+                  className={
+                    activeTab === "SpecialEvents"
+                      ? "gathering-underline active"
+                      : "gathering-underline"
+                  }
+                ></div>
+              </li>
+              <li
+                className={activeTab === "SocialEvents" ? "active" : ""}
+                onClick={SocialEventsClick}
+              >
+                Social Events
+                <div
+                  className={
+                    activeTab === "SocialEvents"
+                      ? "gathering-underline active"
+                      : "gathering-underline"
+                  }
+                ></div>
+              </li>
+            </ul>
+          )}
           <div className="gathering-text-container">
             {activeTab === "FamilyGathering" && <FamilyGathering />}
             {activeTab === "SpecialEvents" && <SpecialEvents />}
             {activeTab === "SocialEvents" && <SocialEvents />}
           </div>
-          <ul className="gathering-titles">
-            <li
-              className={activeTab === "FamilyGathering" ? "active" : ""}
-              onClick={FamilyGatheringClick}
-            >
-              Family Gathering
-              <div
-                className={
-                  activeTab === "FamilyGathering"
-                    ? "gathering-underline active"
-                    : "gathering-underline"
-                }
-              ></div>
-            </li>
-            <li
-              className={activeTab === "SpecialEvents" ? "active" : ""}
-              onClick={SpecialEventsClick}
-            >
-              Special Events
-              <div
-                className={
-                  activeTab === "SpecialEvents"
-                    ? "gathering-underline active"
-                    : "gathering-underline"
-                }
-              ></div>
-            </li>
-            <li
-              className={activeTab === "SocialEvents" ? "active" : ""}
-              onClick={SocialEventsClick}
-            >
-              Social Events
-              <div
-                className={
-                  activeTab === "SocialEvents"
-                    ? "gathering-underline active"
-                    : "gathering-underline"
-                }
-              ></div>
-            </li>
-          </ul>
+          {width > breakPoint && (
+            <ul className="gathering-titles">
+              <li
+                className={activeTab === "FamilyGathering" ? "active" : ""}
+                onClick={FamilyGatheringClick}
+              >
+                Family Gathering
+                <div
+                  className={
+                    activeTab === "FamilyGathering"
+                      ? "gathering-underline active"
+                      : "gathering-underline"
+                  }
+                ></div>
+              </li>
+              <li
+                className={activeTab === "SpecialEvents" ? "active" : ""}
+                onClick={SpecialEventsClick}
+              >
+                Special Events
+                <div
+                  className={
+                    activeTab === "SpecialEvents"
+                      ? "gathering-underline active"
+                      : "gathering-underline"
+                  }
+                ></div>
+              </li>
+              <li
+                className={activeTab === "SocialEvents" ? "active" : ""}
+                onClick={SocialEventsClick}
+              >
+                Social Events
+                <div
+                  className={
+                    activeTab === "SocialEvents"
+                      ? "gathering-underline active"
+                      : "gathering-underline"
+                  }
+                ></div>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </section>

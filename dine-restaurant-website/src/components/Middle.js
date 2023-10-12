@@ -16,14 +16,18 @@ const Middle = () => {
           <div className="middle-image first">
             <picture>
               <source
-                srcset={MiddleImageLeftTablet}
-                media="(max-width: 768px)"
+                srcSet={MiddleImageLeftDesktop}
+                media="(min-width: 1200px)"
               />
               <source
-                srcset={MiddleImageLeftMobile}
-                media="(max-width: 375px)"
+                srcSet={MiddleImageLeftTablet}
+                media="(min-width: 768px)"
               />
-              <img src={MiddleImageLeftDesktop} alt="image_trees" />
+              <source
+                srcSet={MiddleImageLeftMobile}
+                media="(min-width: 475px)"
+              />
+              <img srcSet={MiddleImageLeftMobile} alt="image_trees" />
             </picture>
           </div>
           <div className="middle-content">
@@ -43,14 +47,18 @@ const Middle = () => {
           <div className="middle-image second">
             <picture>
               <source
-                srcset={MiddleImageRightTablet}
-                media="(max-width: 768px)"
+                srcSet={MiddleImageRightDesktop}
+                media="(min-width: 1200px)"
               />
               <source
-                srcset={MiddleImageRightMobile}
-                media="(max-width: 375px)"
+                srcSet={MiddleImageRightTablet}
+                media="(min-width: 768px)"
               />
-              <img src={MiddleImageRightDesktop} alt="image_trees" />
+              <source
+                srcSet={MiddleImageRightMobile}
+                media="(min-width: 475px)"
+              />
+              <img src={MiddleImageRightMobile} alt="image_trees" />
             </picture>
           </div>
           <div className="middle-content">

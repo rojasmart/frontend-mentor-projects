@@ -426,7 +426,7 @@ legend .error {
 }
 
 .middle-content {
-  align-self: center;
+  text-align: center;
 }
 
 .middle-body-text {
@@ -637,7 +637,7 @@ footer {
   justify-content: space-between;
 }
 
-@media (max-width: 1052px) {
+@media (max-width: 1200px) {
   h1 {
     font-size: 4.8rem;
     line-height: 1.333;
@@ -667,6 +667,106 @@ footer {
   .booking-form {
     align-self: center;
   }
+
+  .middle {
+    background-position-y: 12.2rem, bottom;
+    background-position-x: -26rem, 26rem;
+  }
+
+  .middle-family,
+  .middle-locally {
+    flex-direction: column;
+  }
+
+  .middle-family {
+    gap: 0;
+  }
+
+  .middle-locally {
+    gap: 13rem;
+  }
+
+  .middle-image {
+    display: flex;
+    align-self: center;
+  }
+
+  .middle-pattern {
+    left: 55px;
+    top: 180px;
+  }
+
+  .salmon {
+    background-image: url(./images/homepage/salmon-desktop-tablet@2x.jpg);
+  }
+
+  .beef {
+    background-image: url(./images/homepage/beef-desktop-tablet@2x.jpg);
+  }
+
+  .chocolate {
+    background-image: url(./images/homepage/chocolate-desktop-tablet@2x.jpg);
+  }
+
+  .gathering-container {
+    flex-direction: column;
+    gap: 0rem;
+    padding: 9rem 1.5rem;
+  }
+
+  .gathering-slider-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gathering-text-container {
+    text-align: center;
+  }
+
+  .gathering-underline {
+    transform: translate(3rem, 0rem);
+    width: 4.5rem;
+  }
+
+  .gathering-titles {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+  }
+
+  .highlights-content {
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .highlights-container {
+    flex-direction: column;
+    padding: 9rem 2rem;
+  }
+
+  .highlights-item-image {
+    height: 8.5rem;
+  }
+
+  .calltoaction-container {
+    flex-direction: column;
+    padding: 0 1.5rem;
+    text-align: center;
+    align-self: center;
+  }
+
+  .footer-container {
+    padding: 0 3rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  footer {
+    padding: 4.8rem 0;
+  }
 }
 
 @media (max-width: 587px) {
@@ -675,6 +775,19 @@ footer {
     line-height: 1.25;
     letter-spacing: -0.4px;
   }
+
+  .middle {
+    background-image: none;
+  }
+
+  .middle-family {
+    gap: 0;
+  }
+
+  .hero-container {
+    padding: 0 1rem;
+  }
+
   header {
     position: absolute;
     margin-top: 200px;
@@ -682,7 +795,7 @@ footer {
 
   .hero {
     background-image: url(./images/homepage/hero-bg-mobile.jpg);
-    background-position: initial;
+    background-position: center;
   }
 
   .hero-container {
@@ -692,10 +805,15 @@ footer {
   .hero-text {
     width: 100%;
     padding-top: 340px;
+    padding-bottom: 9rem;
   }
 
   .middle-pattern {
-    left: 0;
+    display: none;
+  }
+
+  .middle-locally {
+    gap: 13rem;
   }
 
   .middle-family,
@@ -703,15 +821,100 @@ footer {
   .highlights-container,
   .gathering-container,
   .footer-container,
-  .calltoaction-container {
+  .footer-content,
+  .calltoaction-container,
+  .highlights-item {
     flex-direction: column;
   }
 
-  picture img {
+  .highlights-item {
+    text-align: center;
+  }
+
+  .calltoaction-container {
+    padding: 0 1.5rem;
+  }
+
+  .highlights-container {
+    padding: 6rem 1.5rem;
+  }
+
+  .highlights-item-image::after {
+    display: none;
+  }
+
+  .highlights-item-image {
+    height: 245px;
     width: 100%;
+    background-position: center;
   }
 
-  .calltoaction-container {
+  .highlights-body-text {
+    margin: 0 0 3rem 0;
+  }
+
+  .highlights-content {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 0;
+    padding-right: 0;
+    transform: none;
+  }
+
+  .middle-image {
+    display: flex;
+    align-self: center;
+  }
+
+  .first {
+    transform: translateY(-4rem);
+  }
+
+  .salmon {
+    background-image: url(./images/homepage/salmon-mobile.jpg);
+  }
+
+  .beef {
+    background-image: url(./images/homepage/beef-mobile.jpg);
+  }
+
+  .chocolate {
+    background-image: url(./images/homepage/chocolate-mobile.jpg);
+  }
+
+  .gathering-container {
+    gap: 2rem;
+    padding: 7rem 1.5rem;
+  }
+
+  .gathering-slider-container picture {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gathering-titles {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .gathering-text-container {
+    text-align: center;
+  }
+
+  .bottom-pattern {
+    display: none;
+  }
+
+  .footer-container,
+  .calltoaction-container {
+    align-items: center;
+  }
+
+  .footer-content,
+  .calltoaction-container {
+    text-align: center;
   }
 }
