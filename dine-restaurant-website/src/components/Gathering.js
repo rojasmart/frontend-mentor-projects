@@ -85,7 +85,7 @@ const Gathering = () => {
                 <picture>
                   <source
                     srcSet={SocialEventsImgDesktop}
-                    media="(min-width: 2300px)"
+                    media="(min-width: 1200px)"
                   />
                   <source
                     srcSet={SocialEventsImgTablet}
