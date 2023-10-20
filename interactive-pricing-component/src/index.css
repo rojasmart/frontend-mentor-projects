@@ -104,6 +104,7 @@ header {
 .card-footer {
   background-color: lightcyan;
   display: flex;
+  justify-content: space-between;
 }
 
 button {
@@ -111,6 +112,14 @@ button {
   height: 41px;
   background-color: var(--dark-desaturated-blue);
   border: none;
+  border-radius: 20.5px;
+  color: var(--white);
+  cursor: pointer;
+  align-self: center;
+}
+
+button:hover {
+  color: #becdff;
 }
 
 .billing-wrapper {
