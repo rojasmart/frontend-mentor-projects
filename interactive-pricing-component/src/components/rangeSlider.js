@@ -53,7 +53,7 @@ const RangeSlider = () => {
         <div className="card-header-views">
           <p>{PricingDeets[pageviews].pageviews} pageviews</p>
         </div>
-        <div className="card-price">
+        <div className="card-price desktop">
           <h1 className="price">
             {formatCurrency(
               PricingDeets[pageviews][isMonthly ? "monthly" : "yearly"]
@@ -94,6 +94,14 @@ const RangeSlider = () => {
             </div>
           </div>
         </div>
+        <div className="card-price mobile">
+          <h1 className="price">
+            {formatCurrency(
+              PricingDeets[pageviews][isMonthly ? "monthly" : "yearly"]
+            )}
+          </h1>
+          <p>/ {isMonthly ? "month" : "year"}</p>
+        </div>
       </div>
       <div className="card-header-content">
         <div className="billing-wrapper">
@@ -109,8 +117,9 @@ const RangeSlider = () => {
               />
             </div>
             <p>Yearly Billing </p>
-            <span class="badge">
-              25% <span>discount</span>
+            <span className="badge">
+              <span className="discount-mobile">-</span>25%
+              <span className="discount">discount</span>
             </span>
           </label>
         </div>
