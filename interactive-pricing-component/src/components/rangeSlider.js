@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import slider from "../images/icon-slider.svg";
 
 const PricingDeets = {
   1: {
@@ -46,7 +47,7 @@ const RangeSlider = () => {
     if (pageviews === 5) {
       return "100%";
     }
-    return `${(pageviews - 1) * 20}%`;
+    return `${(pageviews - 1) * 25}%`;
   }
 
   return (
@@ -77,20 +78,39 @@ const RangeSlider = () => {
               setPageviews(e.target.value);
             }}
           />
+          <div
+            className="fake-range"
+            style={{
+              "--width": updateRangePosition(pageviews),
+            }}
+          >
+            <div className="track">
+              <div className="filled"></div>
+            </div>
+            <div
+              className="thumb"
+              style={{
+                transform: `translateX(${pageviews == 5 ? "-100%" : "0"})`,
+              }}
+            >
+              <img src={slider} alt="" />
+            </div>
+          </div>
         </div>
       </div>
       <div className="card-header-content">
         <div className="billing-wrapper">
-          <input
-            type="checkbox"
-            className="billingCheckbox"
-            name="billingType"
-            id="billingType"
-            onChange={(e) => setIsMonthly(!isMonthly)}
-          />
           <label htmlFor="billingType" className="billing-type">
             <p>Monthly Billing</p>
-            <div className="fake-checkbox"></div>
+            <div className="billing-checkbox-wrapper">
+              <input
+                type="checkbox"
+                className="billing-checkbox"
+                name="billingType"
+                id="billingType"
+                onChange={(e) => setIsMonthly(!isMonthly)}
+              />
+            </div>
             <p>Yearly Billing </p>
             <span class="badge">
               25% <span>discount</span>
