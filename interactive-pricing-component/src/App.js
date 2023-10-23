@@ -1,4 +1,5 @@
 import RangeSlider from "./components/rangeSlider";
+import { BsCheck } from "react-icons/bs";
 
 function App() {
   return (
@@ -12,9 +13,18 @@ function App() {
 
         <div className="card-footer">
           <ul className="card-footer-list">
-            <li>Unlimited site</li>
-            <li>100% data ownership </li>
-            <li>Email reports</li>
+            <li>
+              <BsCheck />
+              Unlimited site
+            </li>
+            <li>
+              <BsCheck />
+              100% data ownership
+            </li>
+            <li>
+              <BsCheck />
+              Email reports
+            </li>
           </ul>
           <button> Start My Trial</button>
         </div>
