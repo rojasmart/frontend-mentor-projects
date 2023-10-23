@@ -30,10 +30,7 @@ const PricingDeets = {
 };
 
 function formatCurrency(amt) {
-  return amt.toLocaleString(undefined, {
-    currency: "USD",
-    style: "currency",
-  });
+  return amt.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
 const RangeSlider = () => {

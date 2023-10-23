@@ -10,19 +10,19 @@ function App() {
       </header>
       <div className="card">
         <RangeSlider />
-
+        <div className="horizontal-line"></div>
         <div className="card-footer">
           <ul className="card-footer-list">
             <li>
-              <BsCheck />
+              <BsCheck color={"#10D8C4"} size={"18px"} />
               Unlimited site
             </li>
             <li>
-              <BsCheck />
+              <BsCheck color={"#10D8C4"} size={"18px"} />
               100% data ownership
             </li>
             <li>
-              <BsCheck />
+              <BsCheck color={"#10D8C4"} size={"18px"} />
               Email reports
             </li>
           </ul>

@@ -64,16 +64,27 @@ ul {
 main {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
   align-items: center;
-  padding-top: 5rem;
 }
 
 header {
   text-align: center;
+  background-image: url(./images/pattern-circles.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 233px;
+  padding-top: 5rem;
+}
+
+header p {
+  color: var(--grayish-blue);
+  margin-top: 1rem;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 540px;
   height: 397px;
   border-radius: 8px;
@@ -82,13 +93,39 @@ header {
   padding: 3rem;
 }
 
+.horizontal-line {
+  margin-top: 1rem;
+  height: 1px;
+  background-color: var(--light-grayish-blue);
+  width: 121%;
+  margin-left: -46px;
+}
+
+.price {
+  color: var(--dark-desaturated-blue);
+  font-size: 2.6rem;
+}
+
 .card-header {
   display: flex;
   flex-wrap: wrap;
 }
 
+.card-header-content {
+  margin-top: 1rem;
+}
+
 .card-header-views {
+  display: flex;
+  align-items: center;
   flex: 1 1 50%;
+}
+
+.card-header-views p {
+  color: var(--grayish-blue);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 2px;
 }
 
 .card-price {
@@ -99,6 +136,7 @@ header {
 
 .card-price p {
   align-self: center;
+  color: var(--grayish-blue);
 }
 
 .card-range-slider {
@@ -118,6 +156,11 @@ header {
 
 .card-footer-list li {
   margin-top: 1rem;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  color: var(--grayish-blue);
+  font-size: 0.8rem;
 }
 
 button {
@@ -138,6 +181,7 @@ button:hover {
 .billing-wrapper {
   display: flex;
   justify-content: center;
+  margin-left: 83px;
 }
 
 .billing-type {
@@ -149,6 +193,10 @@ button:hover {
 .billing-type p,
 .billing-type .badge {
   font-size: 0.7rem;
+}
+
+.billing-type p {
+  color: var(--grayish-blue);
 }
 
 .billing-checkbox-wrapper {
