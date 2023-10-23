@@ -29,7 +29,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/dine-restaurant-website-react-js-8B1iNJH5ok)
-- Live Site URL: [Add live site URL here](https://frontend-mentor-projects-kohl.vercel.app/)
+- Live Site URL: [Add live site URL here](https://dine-restaurant-website-kohl.vercel.app/)
 
 ## My process
 
