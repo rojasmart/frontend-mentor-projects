@@ -76,6 +76,10 @@ header {
   padding-top: 5rem;
 }
 
+header h1 {
+  color: var(--dark-desaturated-blue);
+}
+
 header p {
   color: var(--grayish-blue);
   margin-top: 1rem;
