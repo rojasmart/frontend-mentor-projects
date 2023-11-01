@@ -1,7 +1,9 @@
+let currentUser;
 const fetchData = async () => {
   try {
     const res = await fetch("./data.json");
     const data = await res.json();
+    currentUser = data.currentUser;
     buildData(data);
   } catch (error) {
     console.log(error);
@@ -21,7 +23,9 @@ const buildData = (data) => {
 };
 
 const createComment = (comment) => {
-  let card = `<div class="comments-card" id="${comment.id}">
+  let card = `<div class="comments-card ${
+    comment.replies.length > 0 ? "has-reply" : ""
+  }" id="${comment.id}">
           <div class="comments-user">
             <div class="comments-container">
               <div class="comments-likes">
@@ -34,7 +38,9 @@ const createComment = (comment) => {
                   <div class="comments-avatar">
                     <img src="${comment.user.image.png}" alt="comment-avatar" />
                   </div>
-                  <div class="comments-name"><p>${comment.user.username}</p></div>
+                  <div class="comments-name"><p>${
+                    comment.user.username
+                  }</p></div>
                   <div class="comments-date"><p>${comment.createdAt}</p></div>
                   <div class="comments-reply"><button>Reply</button></div>
                 </div>
@@ -44,20 +50,21 @@ const createComment = (comment) => {
               </div>
             </div>
           </div>
-        </div>`;
+        </div>
+        `;
   document
     .getElementById("comments-wrapper")
     .insertAdjacentHTML("beforeend", card);
 };
 
 const createReply = (comment) => {
-  let reply = ` <div class="comments-replies">
-  <div class="comments-divider"></div>
+  let reply = ` <div class="comments-replies" id="${comment.id}">
+  
   <div class="comments-replies-wrapper">
     <div class="comments-container">
       <div class="comments-likes">
         <button class="comments-like-add">+</button>
-        <div class="comments-like-number"></div>
+        <div class="comments-like-number">${comment.score}</div>
         <button class="comments-like-remove">-</button>
       </div>
       <div class="comments-main">
@@ -77,7 +84,5 @@ const createReply = (comment) => {
   </div>
 </div>`;
 
-  document
-    .getElementById("comments-wrapper")
-    .insertAdjacentHTML("beforeend", reply);
+  document.querySelector(".has-reply").insertAdjacentHTML("beforeend", reply);
 };

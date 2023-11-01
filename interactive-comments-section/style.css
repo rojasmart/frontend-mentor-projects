@@ -94,9 +94,16 @@ body {
   margin-top: 2rem;
 }
 
-.comments-divider {
+.has-reply::after {
   background-color: var(--light-gray);
   width: 5px;
+  content: "";
+  position: absolute;
+  width: 3px;
+  top: 450px;
+  bottom: 10px;
+  left: 210px;
+  height: calc(1 * 100px);
 }
 
 .comments-replies-wrapper {
