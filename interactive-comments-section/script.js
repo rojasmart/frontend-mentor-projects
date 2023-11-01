@@ -1,23 +1,3 @@
-const commentsName = document.querySelector(
-  ".comments-current-user .comments-name"
-);
-
-const commentsLike = document.querySelector(
-  ".comments-current-user .comments-like-number"
-);
-
-const commentsImage = document.querySelector(
-  ".comments-current-user .comments-avatar img"
-);
-
-const commentsDate = document.querySelector(
-  ".comments-current-user .comments-date "
-);
-
-const commentsContent = document.querySelector(
-  ".comments-current-user .comments-content "
-);
-
 const fetchData = async () => {
   try {
     const res = await fetch("./data.json");
@@ -31,10 +11,73 @@ const fetchData = async () => {
 fetchData();
 
 const buildData = (data) => {
+  console.log("data", data);
   data.comments.forEach((comment) => {
-    console.log(comment);
-    commentsName.textContent = data.currentUser.username;
-    commentsImage.src = data.currentUser.image.png;
-    commentsContent.textContent = data.content;
+    createComment(comment);
+    comment.replies.forEach((reply) => {
+      createReply(reply);
+    });
   });
+};
+
+const createComment = (comment) => {
+  let card = `<div class="comments-card" id="${comment.id}">
+          <div class="comments-user">
+            <div class="comments-container">
+              <div class="comments-likes">
+                <button class="comments-like-add">+</button>
+                <div class="comments-like-number">${comment.score}</div>
+                <button class="comments-like-remove">-</button>
+              </div>
+              <div class="comments-main">
+                <div class="comments-header">
+                  <div class="comments-avatar">
+                    <img src="${comment.user.image.png}" alt="comment-avatar" />
+                  </div>
+                  <div class="comments-name"><p>${comment.user.username}</p></div>
+                  <div class="comments-date"><p>${comment.createdAt}</p></div>
+                  <div class="comments-reply"><button>Reply</button></div>
+                </div>
+                <div class="comments-content user">
+                  <p>${comment.content}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+  document
+    .getElementById("comments-wrapper")
+    .insertAdjacentHTML("beforeend", card);
+};
+
+const createReply = (comment) => {
+  let reply = ` <div class="comments-replies">
+  <div class="comments-divider"></div>
+  <div class="comments-replies-wrapper">
+    <div class="comments-container">
+      <div class="comments-likes">
+        <button class="comments-like-add">+</button>
+        <div class="comments-like-number"></div>
+        <button class="comments-like-remove">-</button>
+      </div>
+      <div class="comments-main">
+        <div class="comments-header">
+          <div class="comments-avatar">
+            <img src="${comment.user.image.png}" alt={reply-comment-avatar} />
+          </div>
+          <div class="comments-name"><p>${comment.user.username}</p></div>
+          <div class="comments-date"><p>${comment.createdAt}</p></div>
+          <div class="comments-reply"><button>Reply</button></div>
+        </div>
+        <div class="comments-content">
+          <p>${comment.content}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+  document
+    .getElementById("comments-wrapper")
+    .insertAdjacentHTML("beforeend", reply);
 };
