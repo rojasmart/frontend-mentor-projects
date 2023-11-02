@@ -60,7 +60,7 @@ const createComment = (comment) => {
 const createReply = (comment) => {
   let reply = ` <div class="comments-replies" id="${comment.id}">
   
-  <div class="comments-replies-wrapper">
+  
     <div class="comments-container">
       <div class="comments-likes">
         <button class="comments-like-add">+</button>
@@ -81,7 +81,7 @@ const createReply = (comment) => {
         </div>
       </div>
     </div>
-  </div>
+  
 </div>`;
 
   document.querySelector(".has-reply").insertAdjacentHTML("beforeend", reply);

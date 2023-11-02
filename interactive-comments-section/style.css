@@ -61,6 +61,7 @@ body {
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
+  position: relative;
 }
 
 .comments-likes {
@@ -92,18 +93,21 @@ body {
   gap: 2.5rem;
   margin-left: 3rem;
   margin-top: 2rem;
+  position: relative;
 }
 
-.has-reply::after {
+.comments-replies::after {
   background-color: var(--light-gray);
-  width: 5px;
   content: "";
+  width: 5px;
   position: absolute;
-  width: 3px;
-  top: 450px;
-  bottom: 10px;
-  left: 210px;
-  height: calc(1 * 100px);
+  left: -27px;
+  top: 0;
+  bottom: 0;
+}
+
+.comments-replies:not(:nth-child(2))::after {
+  top: -32px;
 }
 
 .comments-replies-wrapper {
