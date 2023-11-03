@@ -89,6 +89,10 @@ const createReply = (comment) => {
   document.querySelector(".has-reply").insertAdjacentHTML("beforeend", reply);
 };
 
+const generateCommentId = () => {
+  return Date.now() + Math.random();
+};
+
 const upvoteComment = (targetComment) => {
   const scoreElement = targetComment.querySelector(".comments-like-score");
   const newScore = parseInt(scoreElement.textContent) + 1;
@@ -106,7 +110,24 @@ const replyComment = (targetComment) => {};
 const commentInputForm = document.querySelector(".main-input-container");
 const commentInput = commentInputForm.querySelector(".comment-input");
 
-const addComment = () => {};
+const addComment = () => {
+  const commentId = generateCommentId();
+
+  const commentObject = {
+    id: commentId,
+    content: commentInput.value,
+    createdAt: "now",
+    score: 0,
+    user: currentUser,
+    replies: [],
+  };
+
+  console.log(commentObject);
+};
+
+commentInputForm.querySelector(".btn-send").addEventListener("click", () => {
+  addComment();
+});
 
 commentsElement.addEventListener("click", (event) => {
   if (event.target.classList.contains("reply")) {
