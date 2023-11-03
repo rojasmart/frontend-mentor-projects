@@ -1,11 +1,20 @@
 let currentUser;
+let comments = new Map();
 const commentsElement = document.querySelector(".comments");
+comments;
 
 const fetchData = async () => {
   try {
     const res = await fetch("./data.json");
     const data = await res.json();
     currentUser = data.currentUser;
+
+    const localComments = localStorage.getItem("comments");
+    comments = new Map(JSON.parse(localComments));
+    for (let commentGroup of comments.values()) {
+      console.log(commentGroup);
+    }
+
     buildData(data);
   } catch (error) {
     console.log(error);
@@ -136,6 +145,13 @@ const addComment = () => {
 
   createComment(commentObject);
   commentInput.value = "";
+
+  comments.set(`commentGroup_${commentId}`, commentObject);
+
+  localStorage.setItem(
+    "comments",
+    JSON.stringify(Array.from(comments.entries()))
+  );
 };
 
 commentInputForm.querySelector(".btn-send").addEventListener("click", () => {
