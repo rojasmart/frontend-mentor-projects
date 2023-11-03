@@ -32,7 +32,7 @@ const createComment = (comment) => {
             <div class="comments-container">
               <div class="comments-likes">
                 <button class="comments-like-add">+</button>
-                <div class="comments-like-number">${comment.score}</div>
+                <span class="comments-like-score">${comment.score}</span>
                 <button class="comments-like-remove">-</button>
               </div>
               <div class="comments-main">
@@ -66,7 +66,7 @@ const createReply = (comment) => {
     <div class="comments-container">
       <div class="comments-likes">
         <button class="comments-like-add">+</button>
-        <div class="comments-like-number">${comment.score}</div>
+        <span class="comments-like-score">${comment.score}</span>
         <button class="comments-like-remove">-</button>
       </div>
       <div class="comments-main">
@@ -89,8 +89,22 @@ const createReply = (comment) => {
   document.querySelector(".has-reply").insertAdjacentHTML("beforeend", reply);
 };
 
-const upvoteComment = () => {};
+const upvoteComment = (targetComment) => {
+  const scoreElement = targetComment.querySelector(".comments-like-score");
+  const newScore = parseInt(scoreElement.textContent) + 1;
+  scoreElement.textContent = newScore;
+};
 
-const downvoteComment = () => {};
+const downvoteComment = (targetComment) => {
+  const scoreElement = targetComment.querySelector(".comments-like-score");
+  const newScore = parseInt(scoreElement.textContent) - 1;
+  scoreElement.textContent = newScore;
+};
 
-commentsElement.addEventListener("click", {});
+commentsElement.addEventListener("click", (event) => {
+  if (event.target.classList.contains("comments-like-add")) {
+    upvoteComment(event.target.closest(".comments-container"));
+  } else if (event.target.classList.contains("comments-like-remove")) {
+    downvoteComment(event.target.closest(".comments-container"));
+  }
+});
