@@ -25,6 +25,8 @@ const buildData = (data) => {
 };
 
 const createComment = (comment) => {
+  console.log("comment", comment);
+  console.log("currentUser", currentUser);
   let card = `<div class="comments-card ${
     comment.replies.length > 0 ? "has-reply" : ""
   }" id="${comment.id}">
@@ -43,6 +45,11 @@ const createComment = (comment) => {
                   <div class="comments-name"><p>${
                     comment.user.username
                   }</p></div>
+                  ${
+                    currentUser.username === comment.user.username
+                      ? `<span class="comments-tag">you</span>`
+                      : ""
+                  }
                   <div class="comments-date"><p>${comment.createdAt}</p></div>
                   <div class="comments-reply"><button class="comment-reply reply">Reply</button></div>
                 </div>
@@ -75,6 +82,11 @@ const createReply = (comment) => {
             <img src="${comment.user.image.png}" alt={reply-comment-avatar} />
           </div>
           <div class="comments-name"><p>${comment.user.username}</p></div>
+          ${
+            currentUser.username === comment.user.username
+              ? `<span class="comments-tag">you</span>`
+              : ""
+          }
           <div class="comments-date"><p>${comment.createdAt}</p></div>
           <div class="comments-reply"><button class="comment-reply reply">Reply</button></div>
         </div>
@@ -90,7 +102,7 @@ const createReply = (comment) => {
 };
 
 const generateCommentId = () => {
-  return Date.now() + Math.random();
+  return Date.now();
 };
 
 const upvoteComment = (targetComment) => {
@@ -122,7 +134,8 @@ const addComment = () => {
     replies: [],
   };
 
-  console.log(commentObject);
+  createComment(commentObject);
+  commentInput.value = "";
 };
 
 commentInputForm.querySelector(".btn-send").addEventListener("click", () => {
