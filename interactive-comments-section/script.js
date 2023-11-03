@@ -1,4 +1,6 @@
 let currentUser;
+const commentsElement = document.querySelector(".comments");
+
 const fetchData = async () => {
   try {
     const res = await fetch("./data.json");
@@ -86,3 +88,9 @@ const createReply = (comment) => {
 
   document.querySelector(".has-reply").insertAdjacentHTML("beforeend", reply);
 };
+
+const upvoteComment = () => {};
+
+const downvoteComment = () => {};
+
+commentsElement.addEventListener("click", {});
