@@ -146,6 +146,10 @@ const commentInputForm = document.querySelector(".main-input-container");
 const commentInput = commentInputForm.querySelector(".comment-input");
 
 const addComment = () => {
+  if (commentInput.value === "") {
+    e.preventDefault();
+  }
+
   const commentId = generateCommentId();
 
   const commentObject = {
