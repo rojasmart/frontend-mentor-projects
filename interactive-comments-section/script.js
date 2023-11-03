@@ -21,6 +21,7 @@ const buildData = (data) => {
       createReply(reply);
     });
   });
+  document.querySelector(".inputUserImage").src = currentUser.image.webp;
 };
 
 const createComment = (comment) => {
@@ -101,6 +102,11 @@ const downvoteComment = (targetComment) => {
 };
 
 const replyComment = (targetComment) => {};
+
+const commentInputForm = document.querySelector(".main-input-container");
+const commentInput = commentInputForm.querySelector(".comment-input");
+
+const addComment = () => {};
 
 commentsElement.addEventListener("click", (event) => {
   if (event.target.classList.contains("reply")) {

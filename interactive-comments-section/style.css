@@ -124,6 +124,28 @@ body {
   padding: 1.5rem;
 }
 
+.comments {
+  margin-top: 2rem;
+}
+
+.input {
+  order: 2;
+  width: 100%;
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+  padding: 8px 16px;
+  min-height: 96px;
+  resize: none;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.inputUserImage {
+  order: 1;
+  height: 32px;
+  border-radius: 50%;
+}
+
 .btn-send {
   background-color: var(--moderate-blue);
   color: white;
@@ -131,4 +153,11 @@ body {
   width: 104px;
   height: 48px;
   text-align: center;
+  text-transform: uppercase;
+  order: 3;
+}
+
+.btn-send:hover {
+  background-color: var(--light-grayish-blue);
+  transition: 0.2s;
 }
