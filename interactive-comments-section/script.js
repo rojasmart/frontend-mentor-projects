@@ -9,12 +9,6 @@ const fetchData = async () => {
     const data = await res.json();
     currentUser = data.currentUser;
 
-    const localComments = localStorage.getItem("comments");
-    comments = new Map(JSON.parse(localComments));
-    for (let commentGroup of comments.values()) {
-      console.log(commentGroup);
-    }
-
     buildData(data);
   } catch (error) {
     console.log(error);
@@ -26,16 +20,38 @@ fetchData();
 const buildData = (data) => {
   data.comments.forEach((comment) => {
     createComment(comment);
+    console.log("comment", comment);
     comment.replies.forEach((reply) => {
       createReply(reply);
     });
   });
+
   document.querySelector(".inputUserImage").src = currentUser.image.webp;
+
+  const localComments = localStorage.getItem("comments");
+  comments = new Map(JSON.parse(localComments));
+
+  for (let commentGroup of comments.values()) {
+    createComment(commentGroup);
+  }
+  /*  if (localComments === null) {
+    data.comments.forEach((commentGroup) => {
+      comments.set(`commentGroup_${commentGroup.id}`, commentGroup);
+      commentsElement.appendChild(createReply(commentGroup));
+    });
+    localStorage.setItem(
+      "comments",
+      JSON.stringify(Array.from(comments.entries()))
+    );
+  } else {
+    comments = new Map(JSON.parse(localComments));
+    for (let commentGroup of comments.values()) {
+      commentsElement.appendChild(createReply(commentGroup));
+    }
+  } */
 };
 
 const createComment = (comment) => {
-  console.log("comment", comment);
-  console.log("currentUser", currentUser);
   let card = `<div class="comments-card ${
     comment.replies.length > 0 ? "has-reply" : ""
   }" id="${comment.id}">
@@ -77,8 +93,6 @@ const createComment = (comment) => {
 
 const createReply = (comment) => {
   let reply = ` <div class="comments-replies" id="${comment.id}">
-  
-  
     <div class="comments-container">
       <div class="comments-likes">
         <button class="comments-like-add">+</button>
