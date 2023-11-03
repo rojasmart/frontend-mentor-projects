@@ -15,7 +15,6 @@ const fetchData = async () => {
 fetchData();
 
 const buildData = (data) => {
-  console.log("data", data);
   data.comments.forEach((comment) => {
     createComment(comment);
     comment.replies.forEach((reply) => {
@@ -44,7 +43,7 @@ const createComment = (comment) => {
                     comment.user.username
                   }</p></div>
                   <div class="comments-date"><p>${comment.createdAt}</p></div>
-                  <div class="comments-reply"><button>Reply</button></div>
+                  <div class="comments-reply"><button class="comment-reply reply">Reply</button></div>
                 </div>
                 <div class="comments-content user">
                   <p>${comment.content}</p>
@@ -56,7 +55,7 @@ const createComment = (comment) => {
         `;
   document
     .getElementById("comments-wrapper")
-    .insertAdjacentHTML("beforeend", card);
+    .insertAdjacentHTML("beforebegin", card);
 };
 
 const createReply = (comment) => {
@@ -76,7 +75,7 @@ const createReply = (comment) => {
           </div>
           <div class="comments-name"><p>${comment.user.username}</p></div>
           <div class="comments-date"><p>${comment.createdAt}</p></div>
-          <div class="comments-reply"><button>Reply</button></div>
+          <div class="comments-reply"><button class="comment-reply reply">Reply</button></div>
         </div>
         <div class="comments-content">
           <p>${comment.content}</p>
@@ -101,10 +100,14 @@ const downvoteComment = (targetComment) => {
   scoreElement.textContent = newScore;
 };
 
+const replyComment = (targetComment) => {};
+
 commentsElement.addEventListener("click", (event) => {
-  if (event.target.classList.contains("comments-like-add")) {
-    upvoteComment(event.target.closest(".comments-container"));
+  if (event.target.classList.contains("reply")) {
+    replyComment(event.target.closest(".comments-container"));
   } else if (event.target.classList.contains("comments-like-remove")) {
     downvoteComment(event.target.closest(".comments-container"));
+  } else if (event.target.classList.contains("comments-like-add")) {
+    upvoteComment(event.target.closest(".comments-container"));
   }
 });
