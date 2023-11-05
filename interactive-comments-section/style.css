@@ -105,6 +105,10 @@ body {
   flex: 1 1 15%;
 }
 
+.comment-delete {
+  color: var(--soft-red);
+}
+
 .comments-replies {
   display: flex;
   gap: 2.5rem;
@@ -177,4 +181,68 @@ body {
 .btn-send:hover {
   background-color: var(--light-grayish-blue);
   transition: 0.2s;
+}
+
+/*
+ * #MODAL
+ */
+
+.modal-container {
+  padding: 16px;
+  position: fixed;
+  inset: 0;
+  place-content: center;
+  display: none;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+.modal {
+  display: grid;
+  max-width: 400px;
+  width: 100%;
+  place-content: center;
+  background-color: var(--clr-white);
+  border-radius: 8px;
+  padding: 32px;
+  z-index: 1;
+  gap: 16px;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.modal-container.active {
+  display: grid;
+}
+
+.no-cancel {
+  flex-grow: 1;
+  background-color: var(--clr-text2);
+}
+.yes-delete {
+  flex-grow: 1;
+  background-color: var(--clr-soft-red);
+}
+.no-cancel:hover {
+  background-color: var(--clr-text2);
+  opacity: 0.6;
+}
+.yes-delete:hover {
+  background-color: var(--clr-pale-red);
+}
+
+.modal-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--clr-text1);
+}
+.modal-text {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--clr-text2);
 }

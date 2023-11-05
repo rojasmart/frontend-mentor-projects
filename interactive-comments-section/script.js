@@ -1,7 +1,6 @@
 let currentUser;
 let comments = new Map();
-const commentsElement = document.querySelector(".comments");
-comments;
+const commentsElement = document.querySelector(".container");
 
 const fetchData = async () => {
   try {
@@ -20,7 +19,7 @@ fetchData();
 const buildData = (data) => {
   data.comments.forEach((comment) => {
     createComment(comment);
-    console.log("comment", comment);
+
     comment.replies.forEach((reply) => {
       createReply(reply);
     });
@@ -34,21 +33,6 @@ const buildData = (data) => {
   for (let commentGroup of comments.values()) {
     createComment(commentGroup);
   }
-  /*  if (localComments === null) {
-    data.comments.forEach((commentGroup) => {
-      comments.set(`commentGroup_${commentGroup.id}`, commentGroup);
-      commentsElement.appendChild(createReply(commentGroup));
-    });
-    localStorage.setItem(
-      "comments",
-      JSON.stringify(Array.from(comments.entries()))
-    );
-  } else {
-    comments = new Map(JSON.parse(localComments));
-    for (let commentGroup of comments.values()) {
-      commentsElement.appendChild(createReply(commentGroup));
-    }
-  } */
 };
 
 const createComment = (comment) => {
@@ -76,7 +60,14 @@ const createComment = (comment) => {
                       : ""
                   }
                   <div class="comments-date"><p>${comment.createdAt}</p></div>
-                  <div class="comments-reply"><button class="comment-reply reply">Reply</button></div>
+                  <div class="comments-tools">
+                  ${
+                    currentUser.username === comment.user.username
+                      ? `<button class="comment-delete">delete</button>`
+                      : ""
+                  }
+                  <button class="comment-reply reply">reply</button>
+                  </div>
                 </div>
                 <div class="comments-content user">
                   <p>${comment.content}</p>
@@ -111,7 +102,15 @@ const createReply = (comment) => {
               : ""
           }
           <div class="comments-date"><p>${comment.createdAt}</p></div>
-          <div class="comments-reply"><button class="comment-reply reply">Reply</button></div>
+          <div class="comments-tools">
+          ${
+            currentUser.username === comment.user.username
+              ? `<button class="comment-delete">delete</button>`
+              : ""
+          }
+          <button class="comment-reply reply">reply</button>
+          
+          </div>
         </div>
         <div class="comments-content">
           <p>${comment.content}</p>
@@ -172,6 +171,14 @@ const addComment = () => {
   );
 };
 
+const deleteComment = () => {};
+
+const showDeleteModal = (targetComment) => {
+  console.log("hello");
+  btnApprove.comment = targetComment;
+  modalContainer.classList.add("active");
+};
+
 commentInputForm.querySelector(".btn-send").addEventListener("click", () => {
   addComment();
 });
@@ -179,6 +186,8 @@ commentInputForm.querySelector(".btn-send").addEventListener("click", () => {
 commentsElement.addEventListener("click", (event) => {
   if (event.target.classList.contains("reply")) {
     replyComment(event.target.closest(".comments-container"));
+  } else if (event.target.classList.contains("comment-delete")) {
+    showDeleteModal(event.target.closest(".comments-container"));
   } else if (event.target.classList.contains("comments-like-remove")) {
     downvoteComment(event.target.closest(".comments-container"));
   } else if (event.target.classList.contains("comments-like-add")) {
