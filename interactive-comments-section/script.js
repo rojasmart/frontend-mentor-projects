@@ -1,6 +1,23 @@
 let currentUser;
 let comments = new Map();
+console.log("comments início", comments);
 const commentsElement = document.querySelector(".container");
+
+const modalContainer = document.querySelector(".modal-container");
+const overlay = document.querySelector(".overlay");
+const btnCancel = document.querySelector(".no-cancel");
+const btnApprove = document.querySelector(".yes-delete");
+
+btnCancel.addEventListener("click", () => {
+  modalContainer.classList.remove("active");
+});
+overlay.addEventListener("click", () => {
+  modalContainer.classList.remove("active");
+});
+btnApprove.addEventListener("click", (evt) => {
+  modalContainer.classList.remove("active");
+  deleteComment(evt.currentTarget.comment);
+});
 
 const fetchData = async () => {
   try {
@@ -17,30 +34,39 @@ const fetchData = async () => {
 fetchData();
 
 const buildData = (data) => {
-  data.comments.forEach((comment) => {
-    createComment(comment);
-
-    comment.replies.forEach((reply) => {
-      createReply(reply);
+  const localComments = localStorage.getItem("comments");
+  if (localComments === null) {
+    data.comments.forEach((commentGroup) => {
+      comments.set(`${commentGroup.id}`, commentGroup);
+      createComment(commentGroup);
+      commentGroup.replies.forEach((reply) => {
+        createReply(reply);
+      });
     });
-  });
+    localStorage.setItem(
+      "comments",
+      JSON.stringify(Array.from(comments.entries()))
+    );
+  } else {
+    comments = new Map(JSON.parse(localComments));
+
+    for (let commentGroup of comments.values()) {
+      createComment(commentGroup);
+      commentGroup.replies.forEach((reply) => {
+        createReply(reply);
+      });
+    }
+  }
 
   document.querySelector(".inputUserImage").src = currentUser.image.webp;
-
-  const localComments = localStorage.getItem("comments");
-  comments = new Map(JSON.parse(localComments));
-
-  for (let commentGroup of comments.values()) {
-    createComment(commentGroup);
-  }
 };
 
 const createComment = (comment) => {
   let card = `<div class="comments-card ${
     comment.replies.length > 0 ? "has-reply" : ""
   }" id="${comment.id}">
-          <div class="comments-user">
-            <div class="comments-container">
+       
+            <div class="comments-container" id="${comment.id}">
               <div class="comments-likes">
                 <button class="comments-like-add">+</button>
                 <span class="comments-like-score">${comment.score}</span>
@@ -74,7 +100,7 @@ const createComment = (comment) => {
                 </div>
               </div>
             </div>
-          </div>
+         
         </div>
         `;
   document
@@ -84,7 +110,7 @@ const createComment = (comment) => {
 
 const createReply = (comment) => {
   let reply = ` <div class="comments-replies" id="${comment.id}">
-    <div class="comments-container">
+    <div class="comments-container" id="${comment.id}">
       <div class="comments-likes">
         <button class="comments-like-add">+</button>
         <span class="comments-like-score">${comment.score}</span>
@@ -163,7 +189,7 @@ const addComment = () => {
   createComment(commentObject);
   commentInput.value = "";
 
-  comments.set(`commentGroup_${commentId}`, commentObject);
+  comments.set(`${commentId}`, commentObject);
 
   localStorage.setItem(
     "comments",
@@ -171,10 +197,30 @@ const addComment = () => {
   );
 };
 
-const deleteComment = () => {};
+const deleteComment = (targetComment) => {
+  const targetCommentGroup = targetComment.closest(".comments-card");
+  const commentGroupObj = comments.get(targetCommentGroup.id);
+  const targetId = parseInt(targetComment.id.substring(8));
+  console.log("targetComment", targetComment.id);
+  console.log("targetComment", targetCommentGroup);
+
+  if (commentGroupObj.id === targetId) {
+    comments.delete(targetCommentGroup.id);
+  } else {
+    const targetIndex = commentGroupObj.replies.findIndex(
+      (obj) => obj.id === targetId
+    );
+    commentGroupObj.replies.splice(targetIndex, 1);
+  }
+  localStorage.setItem(
+    "comments",
+    JSON.stringify(Array.from(comments.entries()))
+  );
+
+  targetComment.remove();
+};
 
 const showDeleteModal = (targetComment) => {
-  console.log("hello");
   btnApprove.comment = targetComment;
   modalContainer.classList.add("active");
 };

@@ -204,7 +204,7 @@ body {
   max-width: 400px;
   width: 100%;
   place-content: center;
-  background-color: var(--clr-white);
+  background-color: var(--white);
   border-radius: 8px;
   padding: 32px;
   z-index: 1;
@@ -222,27 +222,40 @@ body {
 
 .no-cancel {
   flex-grow: 1;
-  background-color: var(--clr-text2);
+  background-color: var(--dark-blue);
 }
 .yes-delete {
   flex-grow: 1;
-  background-color: var(--clr-soft-red);
+  background-color: var(--soft-red);
 }
 .no-cancel:hover {
-  background-color: var(--clr-text2);
+  background-color: var(--grayish-blue);
   opacity: 0.6;
 }
 .yes-delete:hover {
-  background-color: var(--clr-pale-red);
+  background-color: var(--pale-red);
 }
 
 .modal-header {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--clr-text1);
+  color: var(--dark-blue);
 }
 .modal-text {
   font-size: 1rem;
   font-weight: 400;
-  color: var(--clr-text2);
+  color: var(--grayish-blue);
+}
+
+.btn {
+  text-transform: uppercase;
+  height: 48px;
+  padding-inline: 28px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
