@@ -193,9 +193,10 @@ const replyComment = (targetComment) => {
     targetComment.insertAdjacentElement("afterend", replyForm);
     /* to main comment */
   } else {
-    targetComment.nextElementSibling
-      .querySelector(".comments-replies")
-      .insertAdjacentElement("beforeend", replyForm);
+    targetComment.nextElementSibling.insertAdjacentElement(
+      "afterbegin",
+      replyForm
+    );
   }
 
   editBtnText.textContent = "Cancel";
