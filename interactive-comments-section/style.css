@@ -111,6 +111,7 @@ body {
 
 .comments-replies {
   display: flex;
+  flex-direction: column;
   gap: 2.5rem;
   margin-left: 3rem;
   margin-top: 2rem;
@@ -258,4 +259,15 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--white);
+  justify-content: space-between;
+  align-items: start;
 }

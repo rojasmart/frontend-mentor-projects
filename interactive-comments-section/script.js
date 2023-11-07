@@ -1,6 +1,6 @@
 let currentUser;
 let comments = new Map();
-console.log("comments início", comments);
+
 const commentsElement = document.querySelector(".container");
 
 const modalContainer = document.querySelector(".modal-container");
@@ -63,7 +63,7 @@ const buildData = (data) => {
 
 const createComment = (comment) => {
   let card = `<div class="comments-card ${
-    comment.replies.length > 0 ? "has-reply" : ""
+    comment.replies && comment.replies.length > 0 ? "has-reply" : ""
   }" id="${comment.id}">
        
             <div class="comments-container" id="${comment.id}">
@@ -165,7 +165,100 @@ const downvoteComment = (targetComment) => {
   scoreElement.textContent = newScore;
 };
 
-const replyComment = (targetComment) => {};
+let replyFormComment = null;
+let replyForm = null;
+
+const replyComment = (targetComment) => {
+  const editBtnText = targetComment.querySelector(".comments-tools .reply");
+
+  if (replyForm) {
+    const nextElement = targetComment.nextElementSibling;
+    if (replyFormComment === targetComment) {
+      editBtnText.textContent = "Reply";
+      replyForm.remove();
+      replyFormComment = null;
+      replyForm = null;
+      return;
+    }
+    replyFormComment.querySelector(".comments-tools .reply").textContent =
+      "Reply";
+    replyForm.remove();
+  }
+
+  replyForm = createReplyForm(targetComment);
+  replyFormComment = targetComment;
+
+  /* to reply */
+  if (targetComment.parentElement.classList.contains("comments-replies")) {
+    targetComment.insertAdjacentElement("afterend", replyForm);
+    /* to main comment */
+  } else {
+    targetComment.nextElementSibling
+      .querySelector(".comments-replies")
+      .insertAdjacentElement("beforeend", replyForm);
+  }
+
+  editBtnText.textContent = "Cancel";
+};
+
+const createReplyForm = (targetComment) => {
+  const formContainer = document.createElement("div");
+  formContainer.classList.add("form", "send-reply-form");
+
+  const formInput = document.createElement("textarea");
+  formInput.classList.add("input", "reply-input");
+  formInput.placeholder = "Add a comment...";
+
+  const image = document.createElement("img");
+  image.classList.add("inputUserImage");
+  image.src = currentUser.image.webp;
+  image.alt = "user image";
+
+  const btnSend = document.createElement("button");
+  btnSend.classList.add("btn-send");
+  btnSend.textContent = "send";
+
+  formContainer.appendChild(formInput);
+  formContainer.appendChild(image);
+  formContainer.appendChild(btnSend);
+
+  btnSend.addEventListener("click", () => {
+    targetComment.querySelector(".comments-tools .reply").textContent = "Reply";
+    if (formInput.value === "") {
+      formContainer.remove();
+      return;
+    }
+    addReplyComment(targetComment, formContainer, formInput.value);
+  });
+
+  return formContainer;
+};
+
+const addReplyComment = (targetComment, form, content) => {
+  const replyingTo = targetComment.querySelector(`.comments-name`).textContent;
+  const commentId = generateCommentId();
+
+  const commentObject = {
+    id: commentId,
+    content: content,
+    createdAt: "now",
+    score: 0,
+    replyingTo: replyingTo,
+    user: currentUser,
+  };
+
+  form.append(createReply(commentObject));
+  form.remove();
+
+  const groupOgj = comments.get(targetComment.closest(".comments-card").id);
+
+  groupOgj.replies.push(commentObject);
+
+  localStorage.setItem(
+    "comments",
+    JSON.stringify(Array.from(comments.entries()))
+  );
+};
 
 const commentInputForm = document.querySelector(".main-input-container");
 const commentInput = commentInputForm.querySelector(".comment-input");
