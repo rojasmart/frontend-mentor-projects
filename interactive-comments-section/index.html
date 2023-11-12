@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
     <link
       rel="icon"
       type="image/png"
@@ -10,24 +12,42 @@
       href="./images/favicon-32x32.png"
     />
 
-    <link rel="stylesheet" href="style.css" />
-    <script src="./script.js" defer></script>
     <title>Interactive comments section</title>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <script src="./app.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <main class="container">
-      <section id="comments-wrapper" class="comments">
+    <main>
+      <section class="chat-section">
+        <div class="comments-container">
+          <div class="comments"></div>
+        </div>
+
         <div class="main-input-container">
-          <textarea
-            class="input comment-input"
-            placeholder="Add a comment..."
-            name="comment input"
-          ></textarea>
-          <img class="inputUserImage" src="" alt="user" />
-          <button class="btn-send">send</button>
+          <div class="main-input-group">
+            <div class="form send-comment-form">
+              <textarea
+                class="input comment-input"
+                placeholder="Add a comment..."
+                name="comment input"
+              ></textarea>
+              <img class="inputUserImage" src="" alt="user" />
+              <button class="btn send-btn">send</button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
+
     <div class="modal-container">
       <div class="overlay"></div>
       <div class="modal">
