@@ -71,6 +71,7 @@ main {
   width: 2px;
   background-color: var(--clr-input-border);
   margin-right: 16px;
+  margin-top: 1rem;
 }
 
 .replies-comments .comment:first-child {
@@ -421,6 +422,7 @@ main {
 
   .replies-thread-line {
     margin-inline: 40px;
+    margin-top: 1rem;
   }
 
   .form {
