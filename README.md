@@ -14,4 +14,5 @@ This repository contains all my solutions to several frontend mentor challenges
 - Todo App - [Click Here](https://todo-app-main-xi-mauve.vercel.app/)
 - Dine Restaurant - [Click Here](https://dine-restaurant-website-kohl.vercel.app/)
 - Interactive Pricing Component - [Click Here](https://interactive-pricing-component-khaki.vercel.app/)
-- Interactive Comments Sections - [Click Here](#)
+
+# I decided to continue as a separate development all my frontend mentors projects
