@@ -1,6 +1,6 @@
 # frontend-mentor-projects
 
-This repository contains all my solutions to several frontend mentor challenges
+This repository contains some of my solutions to several frontend mentor challenges
 
 - Workit Landing Page - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/workit-landing-page/)
 - Notifications Page - [Click Here](https://binarypsilocybin.github.io/frontend-mentor-projects/notifications-page/)
@@ -15,4 +15,4 @@ This repository contains all my solutions to several frontend mentor challenges
 - Dine Restaurant - [Click Here](https://dine-restaurant-website-kohl.vercel.app/)
 - Interactive Pricing Component - [Click Here](https://interactive-pricing-component-khaki.vercel.app/)
 
-# I decided to continue as a separate development all my frontend mentors projects
+## I decided to continue as a separate development all my frontend mentors projects and you can check them on separate repositories.
