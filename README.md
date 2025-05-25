@@ -13,6 +13,6 @@ This repository contains some of my solutions to several frontend mentor challen
 - Interactive Card Details Form - [Click Here](https://interactive-card-details-form-binary.netlify.app/)
 - Todo App - [Click Here](https://todo-app-main-xi-mauve.vercel.app/)
 - Dine Restaurant - [Click Here](https://dine-restaurant-website-kohl.vercel.app/)
-- Interactive Pricing Component - [Click Here](https://interactive-pricing-component-khaki.vercel.app/)
+- Interactive Pricing Component - [Click Here]([https://interactive-pricing-component-khaki.vercel.app/](https://interactive-pricing-component-khaki.vercel.app/))
 
 ## I decided to continue as a separate development all my frontend mentors projects and you can check them on separate repositories.
